@@ -1,0 +1,2488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viva Gis | Indumentaria Mayorista</title>
+<meta name="description" content="Somos fabricantes y mayoristas de moda femenina. Prendas básicas, importadas y personalizadas. Envíos a todo el país.">
+<link rel="icon" type="image/png" href="https://txiplxxnvgpryujtcgem.supabase.co/storage/v1/object/public/assets/favicon.png">
+<link rel="apple-touch-icon" href="https://txiplxxnvgpryujtcgem.supabase.co/storage/v1/object/public/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Satoshi desde Fontshare -->
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<!-- Clash Display desde Fontshare -->
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  /* Paleta blanco y negro */
+  --sand:#FAFAFA;
+  --sand2:#F5F5F5;
+  --sand3:#E8E8E8;
+  --ink:#111111;
+  --ink2:#333333;
+  --ink3:#888888;
+  --ghost:#F5F5F5;
+  --olive:#111111;
+  --blue:#111111;
+  --white:#FFFFFF;
+  --rose:#F0F0F0;
+  --rose2:#555555;
+  --rose3:#111111;
+  --r:2px;--rl:4px;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Satoshi',sans-serif;background:var(--sand);color:var(--ink);overflow-x:hidden}
+.announce{background:var(--olive);color:white;text-align:center;padding:8px 16px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700}
+/* ── NAV ── */
+nav{background:var(--white);border-bottom:1px solid var(--sand3);padding:0 32px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;height:64px;position:sticky;top:0;z-index:500;transition:box-shadow .3s var(--ease)}
+nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,0.08)}
+.logo{cursor:pointer;background:none;border:none;padding:0;display:flex;align-items:center;flex-shrink:0}
+.logo img{height:52px;width:auto;display:block;max-width:220px}
+
+/* CENTER NAV */
+.nav-center{display:flex;align-items:center;justify-content:center;gap:4px}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);cursor:pointer;background:none;border:none;font-family:'Satoshi',sans-serif;padding:8px 12px;border-radius:var(--r);transition:all .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);background:var(--sand)}
+
+/* CATALOG DROPDOWN */
+.nav-dropdown{position:relative}
+.nav-dropdown-btn{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);cursor:pointer;background:none;border:none;font-family:'Satoshi',sans-serif;padding:8px 12px;border-radius:var(--r);transition:all .2s;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.nav-dropdown-btn:hover,.nav-dropdown-btn.active{color:var(--ink);background:var(--sand)}
+.nav-dropdown-btn svg{transition:transform .2s}
+.nav-dropdown:hover .nav-dropdown-btn svg{transform:rotate(180deg)}
+.nav-dropdown-menu{position:absolute;top:calc(100% + 4px);left:0;background:var(--white);border:1px solid var(--sand3);border-radius:8px;padding:8px;min-width:220px;box-shadow:0 8px 32px rgba(0,0,0,0.1);opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .25s var(--ease);z-index:600}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-drop-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--r);cursor:pointer;transition:background .15s;font-size:12px;color:var(--ink);background:none;border:none;width:100%;text-align:left;font-family:'Satoshi',sans-serif}
+.nav-drop-item:hover{background:var(--sand)}
+.nav-drop-item .drop-emoji{font-size:16px;width:22px;text-align:center}
+.nav-drop-divider{height:1px;background:var(--sand3);margin:4px 0}
+.nav-drop-all{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3)}
+
+/* SEARCH BAR */
+.nav-search{display:flex;align-items:center;gap:8px;background:var(--sand);border:1px solid var(--sand3);border-radius:24px;padding:7px 14px;transition:all .25s var(--ease);max-width:220px;width:100%}
+.nav-search:focus-within{border-color:var(--ink);background:var(--white);box-shadow:0 0 0 2px rgba(17,17,17,0.08)}
+.nav-search input{background:none;border:none;outline:none;font-family:'Satoshi',sans-serif;font-size:12px;color:var(--ink);width:100%;min-width:0}
+.nav-search input::placeholder{color:var(--ink3)}
+.nav-search svg{color:var(--ink3);flex-shrink:0;cursor:pointer;transition:color .2s}
+.nav-search:focus-within svg{color:var(--ink)}
+
+/* SEARCH RESULTS DROPDOWN */
+.search-results{position:absolute;top:calc(100% + 8px);left:0;right:auto;background:var(--white);border:1px solid var(--sand3);border-radius:8px;padding:8px;min-width:320px;box-shadow:0 8px 32px rgba(0,0,0,0.1);z-index:600;display:none}
+.search-results.open{display:block;animation:pgIn .2s var(--ease)}
+.search-wrap{position:relative}
+.search-result-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--r);cursor:pointer;transition:background .15s}
+.search-result-item:hover{background:var(--sand)}
+.sri-img{width:36px;height:42px;border-radius:var(--r);object-fit:cover;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px}
+.sri-name{font-size:13px;font-weight:700;font-family:'Clash Display',sans-serif}
+.sri-cat{font-size:10px;color:var(--ink3);letter-spacing:1px;text-transform:uppercase}
+.sri-price{font-size:13px;font-weight:700;margin-left:auto;flex-shrink:0}
+.search-empty{padding:16px 12px;font-size:12px;color:var(--ink3);text-align:center}
+
+/* RIGHT ICONS */
+.nav-r{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.nav-icon-btn{background:none;border:none;cursor:pointer;color:var(--ink3);display:flex;align-items:center;gap:5px;padding:8px;border-radius:var(--r);transition:all .2s;position:relative}
+.nav-icon-btn:hover{background:var(--sand);color:var(--ink)}
+.cart-icon-btn .cbadge{position:absolute;top:-2px;right:-2px;width:16px;height:16px;font-size:9px}
+.cbadge{background:var(--olive);color:white;border-radius:50%;width:18px;height:18px;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:700;transition:transform .2s}
+.cbadge.pop{animation:pop .3s var(--ease)}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.5)}100%{transform:scale(1)}}
+.mob-btn{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink)}
+.mob-search-btn{display:none;background:none;border:none;cursor:pointer;color:var(--ink3);padding:8px;border-radius:var(--r);transition:all .2s}.mob-search-btn:hover{background:var(--sand);color:var(--ink)}
+.mob-search-bar{display:none;position:fixed;top:0;left:0;right:0;z-index:498;background:var(--white);box-shadow:0 4px 20px rgba(0,0,0,0.1)}
+.mob-search-bar.open{display:block;animation:slideDown .2s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+/* MOBILE MENU */
+.mob-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--white);z-index:499;flex-direction:column;overflow-y:auto}
+.mob-menu.open{display:flex}
+.mob-section{border-bottom:1px solid var(--sand3);padding:8px 0}
+.mob-section-secondary{background:var(--sand)}
+.mob-account-section{padding:20px 20px 32px;margin-top:auto;border-bottom:none}
+.mob-link{display:block;padding:13px 24px;font-size:13px;letter-spacing:.5px;color:var(--ink);background:none;border:none;font-family:'Satoshi',sans-serif;text-align:left;cursor:pointer;width:100%;transition:background .15s}
+.mob-link:hover{background:var(--sand)}
+.mob-link-sm{display:block;padding:10px 24px;font-size:12px;color:var(--ink3);background:none;border:none;font-family:'Satoshi',sans-serif;text-align:left;cursor:pointer;width:100%;transition:color .15s}
+.mob-link-sm:hover{color:var(--ink)}
+.mob-cats-toggle{display:flex;align-items:center;justify-content:space-between;padding:13px 24px;font-size:13px;letter-spacing:.5px;color:var(--ink);cursor:pointer;font-family:'Satoshi',sans-serif;transition:background .15s}
+.mob-cats-toggle:hover{background:var(--sand)}
+.mob-cats-list a{display:block;padding:10px 24px 10px 40px;font-size:12px;color:var(--ink3);background:none;border:none;font-family:'Satoshi',sans-serif;text-align:left;cursor:pointer;width:100%;transition:color .15s}
+.mob-cats-list a:hover{color:var(--ink)}
+.mob-auth-btn{width:100%;padding:13px;font-family:'Satoshi',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);margin-bottom:10px;transition:all .2s}
+.mob-auth-primary{background:var(--olive);color:white;border:none}
+.mob-auth-primary:hover{opacity:.85}
+.mob-auth-secondary{background:transparent;color:var(--ink);border:1px solid var(--sand3)}
+.mob-auth-secondary:hover{border-color:var(--ink)}
+.mob-user-greeting{font-family:'Clash Display',sans-serif;font-size:16px;font-weight:700;margin-bottom:12px;color:var(--ink)}
+.mob-search{padding:12px 16px;border-bottom:1px solid var(--sand2)}
+.mob-search input{width:100%;padding:10px 14px;border:1px solid var(--sand3);border-radius:24px;font-family:'Satoshi',sans-serif;font-size:13px;outline:none}
+.mob-search input:focus{border-color:var(--ink)}
+.page{display:none}
+.page.active{display:block;animation:pgIn .4s var(--ease)}
+@keyframes pgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;height:calc(100vh - 64px);min-height:600px;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center top;background-repeat:no-repeat;transition:opacity .5s}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.2) 60%,rgba(0,0,0,0) 100%)}
+.hero-content{position:relative;z-index:2;padding:0 80px;max-width:1100px;margin:0 auto;width:100%}
+.htag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--rose2);margin-bottom:20px;display:flex;align-items:center;gap:10px;opacity:0;animation:fadeUp .7s var(--ease) .1s forwards}
+.htag::before{content:'';display:block;width:24px;height:1px;background:var(--rose2)}
+.hh1{font-family:'Clash Display',sans-serif;font-size:60px;font-weight:700;line-height:1.0;letter-spacing:-1px;margin-bottom:24px;color:white;opacity:0;animation:fadeUp .7s var(--ease) .2s forwards}
+.hh1 em{font-style:italic;font-weight:300;color:rgba(255,255,255,0.75)}
+.hp{font-size:15px;line-height:1.9;color:rgba(255,255,255,0.75);margin-bottom:36px;max-width:480px;opacity:0;animation:fadeUp .7s var(--ease) .3s forwards}
+.hbtns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:fadeUp .7s var(--ease) .4s forwards}
+/* Hero sin imagen */
+.hero.no-img{height:auto;min-height:auto;background:var(--white)}
+.hero.no-img .hero-overlay{display:none}
+.hero.no-img .hh1{color:var(--ink)}
+.hero.no-img .htag{color:var(--rose3)}
+.hero.no-img .htag::before{background:var(--rose3)}
+.hero.no-img .hp{color:var(--ink3)}
+.hero.no-img .hero-content{padding:80px 80px 0}
+/* Scroll indicator */
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2;opacity:0;animation:fadeUp .7s var(--ease) 1s forwards}
+.hero-scroll span{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.6)}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,0.6),transparent);animation:scrollLine 1.5s ease-in-out infinite}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.hero-right-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:absolute;right:40px;top:50%;transform:translateY(-50%);width:380px;opacity:0;animation:fadeUp .8s var(--ease) .3s forwards}
+.hi{border-radius:var(--rl);display:flex;align-items:center;justify-content:center;transition:transform .4s var(--ease);overflow:hidden}
+.hi:hover{transform:scale(1.03)}
+.hi.tall{height:320px;font-size:72px;grid-row:span 2}
+.hi.short{height:155px;font-size:52px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.bf{background:var(--olive);color:white;border:none;padding:14px 32px;font-family:'Satoshi',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);transition:all .25s var(--ease)}
+.bf:hover{background:white;color:var(--ink);transform:translateY(-2px)}
+.bg{background:transparent;color:white;border:1px solid rgba(255,255,255,0.4);padding:14px 32px;font-family:'Satoshi',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);transition:all .25s var(--ease)}
+.bg:hover{border-color:white;transform:translateY(-2px)}
+.bf-dark{background:var(--olive);color:white;border:none;padding:14px 32px;font-family:'Satoshi',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);transition:all .25s var(--ease)}
+.bf-dark:hover{background:var(--rose3);transform:translateY(-2px)}
+.bg-dark{background:transparent;color:var(--ink);border:1px solid var(--sand3);padding:14px 32px;font-family:'Satoshi',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);transition:all .25s var(--ease)}
+.bg-dark:hover{border-color:var(--ink);transform:translateY(-2px)}
+
+/* BADGES */
+.bstrip{background:var(--ghost);border-top:1px solid var(--sand3);border-bottom:1px solid var(--sand3);padding:40px}
+.blist{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.bitem{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 24px;border-right:1px solid var(--sand3)}
+.bitem:last-child{border-right:none}
+.bitem-icon{color:var(--olive);margin-bottom:14px;opacity:0.8}
+.bitem-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink);margin-bottom:5px}
+.bitem-desc{font-size:13px;color:var(--ink3);line-height:1.4}
+
+/* MARQUEE */
+.mwrap{background:var(--olive);padding:13px 0;overflow:hidden}
+.mtrack{display:flex;white-space:nowrap;animation:mscroll 24s linear infinite}
+.mtrack:hover{animation-play-state:paused}
+.minner{display:flex;flex-shrink:0}
+.minner s{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.42);padding:0 28px;text-decoration:none;display:inline-block}
+.minner s.ac{color:var(--rose2)}
+@keyframes mscroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTIONS */
+.sec{padding:80px 40px;max-width:1100px;margin:0 auto}
+.sechd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px}
+.sectitle{font-family:'Clash Display',sans-serif;font-size:36px;font-weight:700;line-height:1.1}
+.sectitle em{font-style:italic;font-weight:400;color:var(--ink3)}
+.seclink{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--olive);cursor:pointer;border-bottom:1px solid var(--olive);padding-bottom:2px;background:none;border-top:none;border-left:none;border-right:none;font-family:'Satoshi',sans-serif;transition:opacity .2s}
+.seclink:hover{opacity:.65}
+
+/* CATEGORIES */
+.cats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;width:100%}
+.ctile{position:relative;cursor:pointer;overflow:hidden;height:72vh;min-height:500px;display:flex;align-items:flex-end;border-right:1px solid rgba(255,255,255,0.12)}
+.ctile:last-child{border-right:none}
+.ctile:hover .ctile-img{transform:scale(1.05)}
+.ctile.wide{grid-column:span 1}
+.ctile-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s var(--ease)}
+.ctile-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.3) 45%,rgba(0,0,0,0.05) 100%)}
+.cemoji{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);font-size:56px;user-select:none;opacity:0.5}
+.cimg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%}
+.clbl{position:relative;z-index:2;padding:24px 28px 40px;width:100%}
+.clbl-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:10px;display:block}
+.clbl-name{font-family:'Clash Display',sans-serif;font-size:36px;font-weight:700;color:white;line-height:1.1}
+
+/* CAROUSEL */
+.carousel-wrap{position:relative;overflow:hidden}
+.carousel-track{display:flex;gap:16px;transition:transform .5s var(--ease)}
+.carousel-track .pcard{flex:0 0 calc(25% - 12px);min-width:0}
+.car-btn{position:absolute;top:40%;transform:translateY(-50%);width:40px;height:40px;background:var(--white);border:1px solid var(--sand3);border-radius:50%;cursor:pointer;font-size:16px;z-index:10;transition:all .2s var(--ease);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(28,25,23,0.1)}
+.car-btn:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.car-prev{left:-16px}
+.car-next{right:-16px}
+
+/* PRODUCT CARD */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.pcard{background:var(--white);border-radius:var(--rl);overflow:hidden;cursor:pointer;border:1px solid transparent;transition:all .35s var(--ease)}
+.pcard:hover{border-color:var(--sand3);transform:translateY(-6px);box-shadow:0 12px 32px rgba(28,25,23,0.09)}
+.pimg{aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:60px;position:relative;overflow:hidden}
+.pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s var(--ease)}
+.pcard:hover .pimg img{transform:scale(1.05)}
+.ppil{position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:2px;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;z-index:1}
+.ppil.new{background:var(--ink);color:white}
+.ppil.sale{background:var(--rose3);color:white}
+.ppil.imp{background:#4A7C59;color:white}
+.pquick{position:absolute;bottom:12px;left:12px;right:12px;background:var(--white);padding:10px;border-radius:var(--r);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;text-align:center;cursor:pointer;opacity:0;transform:translateY(10px);transition:all .3s var(--ease);font-family:'Satoshi',sans-serif;color:var(--ink);font-weight:700;border:none;z-index:1}
+.pcard:hover .pquick{opacity:1;transform:translateY(0)}
+.pbody{padding:14px 16px 18px}
+.pcat{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.pname{font-family:'Clash Display',sans-serif;font-size:15px;font-weight:700;margin-bottom:8px;line-height:1.2}
+.ppr{display:flex;align-items:center;gap:8px}
+.pprice{font-size:16px;font-weight:700}
+.pold{font-size:12px;color:var(--ink3);text-decoration:line-through}
+
+/* TESTIMONIALS */
+.tcarousel{position:relative;overflow:hidden}
+.ttrack{display:flex;transition:transform .5s var(--ease)}
+.tslide{flex:0 0 calc(33.33% - 11px);margin-right:16px}
+.tcard{background:var(--white);border:1px solid var(--sand3);border-radius:var(--rl);padding:28px;height:100%}
+.tstars{color:var(--rose3);font-size:14px;margin-bottom:12px;letter-spacing:2px}
+.ttext{font-family:'Clash Display',sans-serif;font-size:16px;font-style:italic;line-height:1.7;margin-bottom:16px;color:var(--ink2)}
+.tname{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink3)}
+.tdots{display:flex;justify-content:center;gap:8px;margin-top:24px}
+.tdot{width:8px;height:8px;border-radius:50%;background:var(--sand3);cursor:pointer;transition:all .25s}
+.tdot.on{background:var(--rose3);width:24px;border-radius:4px}
+
+/* EDITORIAL */
+.ed{background:var(--ink);padding:80px 40px;position:relative;overflow:hidden}
+.ed-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.edtag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--rose2);margin-bottom:16px}
+.edh2{font-family:'Clash Display',sans-serif;font-size:44px;font-weight:700;line-height:1.05;color:white;margin-bottom:20px}
+.edh2 em{font-style:italic;font-weight:300;color:var(--rose2)}
+.edp{font-size:13px;line-height:1.9;color:rgba(255,255,255,0.48);margin-bottom:32px}
+.edvis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.edbox{border-radius:var(--rl);display:flex;align-items:center;justify-content:center;font-size:44px;background:rgba(255,255,255,0.06);transition:transform .3s var(--ease)}
+.edbox:hover{transform:scale(1.03)}
+.edbox.t{height:200px}
+.edbox.s{height:96px}
+
+/* STATS */
+.stats-strip{background:var(--ghost);border-top:1px solid var(--sand3);border-bottom:1px solid var(--sand3);padding:48px 40px}
+.stats>div{text-align:center;padding:8px}
+.stats{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stat-num{font-family:'Clash Display',sans-serif;font-size:40px;font-weight:700;color:var(--ink);line-height:1}
+.stat-num span{color:var(--rose3);font-size:18px}
+.stat-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);margin-top:6px}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:8px}
+.faq-item{background:var(--white);border:1px solid var(--sand3);border-radius:var(--rl);overflow:hidden}
+.faq-q{width:100%;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:700;cursor:pointer;background:none;border:none;font-family:'Satoshi',sans-serif;color:var(--ink);text-align:left;transition:background .2s}
+.faq-q:hover{background:var(--sand)}
+.faq-icon{font-size:18px;transition:transform .3s var(--ease);flex-shrink:0;margin-left:16px}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.faq-item.open .faq-a{max-height:400px}
+.faq-a-inner{padding:0 20px 18px;font-size:13px;line-height:1.9;color:var(--ink3)}
+
+/* POPUP */
+.popup-ov{display:none;position:fixed;inset:0;background:rgba(28,25,23,0.6);z-index:700;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+.popup-ov.open{display:flex;animation:pgIn .3s var(--ease)}
+.popup-box{background:var(--white);border-radius:var(--rl);max-width:480px;width:90%;overflow:hidden;position:relative}
+.popup-img{width:100%;max-height:240px;object-fit:cover}
+.popup-body{padding:28px}
+.popup-title{font-family:'Clash Display',sans-serif;font-size:24px;font-weight:700;margin-bottom:8px}
+.popup-msg{font-size:13px;color:var(--ink3);line-height:1.8;margin-bottom:20px}
+.popup-x{position:absolute;top:12px;right:12px;background:rgba(28,25,23,0.6);color:white;border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.popup-x:hover{background:var(--ink)}
+
+/* CART */
+.cart-ov{display:none;position:fixed;inset:0;background:rgba(28,25,23,0.5);z-index:600;backdrop-filter:blur(2px)}
+.cart-ov.open{display:block}
+.cart-panel{position:fixed;top:0;right:-460px;width:460px;max-width:100vw;height:100%;background:var(--white);z-index:601;transition:right .38s var(--ease);display:flex;flex-direction:column;border-left:1px solid var(--sand3)}
+.cart-panel.open{right:0}
+.cart-top{padding:24px 28px;border-bottom:1px solid var(--sand3);display:flex;justify-content:space-between;align-items:center}
+.cart-ttl{font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700}
+.cart-x{background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink3);transition:color .2s;line-height:1;padding:4px 8px;border-radius:50%}
+.cart-x:hover{color:var(--ink);background:var(--sand)}
+.cart-body{flex:1;overflow-y:auto;padding:16px 28px}
+.cart-empty{text-align:center;padding:60px 20px;color:var(--ink3)}
+.cart-empty .ei{font-size:44px;margin-bottom:14px}
+.citem{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--sand2)}
+.citem-img{width:68px;height:80px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;overflow:hidden}
+.citem-img img{width:100%;height:100%;object-fit:cover}
+.citem-info{flex:1;min-width:0}
+.citem-name{font-family:'Clash Display',sans-serif;font-size:14px;font-weight:700;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.citem-sub{font-size:11px;color:var(--ink3);margin-bottom:10px}
+.citem-row{display:flex;justify-content:space-between;align-items:center}
+.cqty{display:flex;align-items:center;border:1px solid var(--sand3);border-radius:var(--r)}
+.cqty button{width:26px;height:26px;background:none;border:none;cursor:pointer;font-size:14px;transition:background .15s;font-family:'Satoshi',sans-serif}
+.cqty button:hover{background:var(--sand2)}
+.cqty span{width:28px;text-align:center;font-size:12px;font-weight:700}
+.citem-price{font-size:13px;font-weight:700}
+.cremove{font-size:10px;color:var(--ink3);background:none;border:none;cursor:pointer;font-family:'Satoshi',sans-serif;transition:color .2s}
+.cremove:hover{color:var(--rose3)}
+.cart-foot{padding:20px 28px;border-top:1px solid var(--sand3)}
+.ctline{display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px;color:var(--ink3)}
+.ctgrand{display:flex;justify-content:space-between;font-family:'Clash Display',sans-serif;font-size:20px;font-weight:700;margin-bottom:16px}
+.cmin-warn{background:rgba(181,98,58,0.08);border:1px solid rgba(181,98,58,0.2);border-radius:var(--r);padding:10px;font-size:11px;color:var(--rose3);text-align:center;margin-bottom:12px}
+.btn-co{background:var(--olive);color:white;border:none;width:100%;padding:15px;font-family:'Satoshi',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);margin-bottom:8px;transition:all .25s var(--ease)}
+.btn-co:hover{background:var(--ink)}
+.btn-wa{background:white;color:#25D366;border:1px solid #25D366;width:100%;padding:12px;font-family:'Satoshi',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);transition:all .25s var(--ease)}
+.btn-wa:hover{background:#25D366;color:white}
+
+/* DETAIL */
+.dw{max-width:1100px;margin:0 auto;padding:60px 40px;display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.dgal{display:grid;grid-template-columns:76px 1fr;gap:10px}
+.dthumbs{display:flex;flex-direction:column;gap:8px}
+.dthumb{border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:26px;aspect-ratio:2/3;cursor:pointer;border:2px solid transparent;transition:all .2s;opacity:.6;overflow:hidden}
+.dthumb img{width:100%;height:100%;object-fit:cover}
+.dthumb.on,.dthumb:hover{border-color:var(--rose3);opacity:1}
+.dmain{border-radius:var(--rl);display:flex;align-items:center;justify-content:center;font-size:100px;aspect-ratio:2/3;transition:transform .3s var(--ease);overflow:hidden}
+.dmain img{width:100%;height:100%;object-fit:cover}
+.dmain:hover{transform:scale(1.02)}
+.dinfo{padding:16px 0}
+.dback{background:none;border:none;cursor:pointer;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);font-family:'Satoshi',sans-serif;margin-bottom:24px;display:flex;align-items:center;gap:6px;transition:color .2s}
+.dback:hover{color:var(--rose3)}
+.dcat{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--rose3);margin-bottom:8px}
+.dname{font-family:'Clash Display',sans-serif;font-size:34px;font-weight:700;line-height:1.1;margin-bottom:16px}
+.dprice{font-size:28px;font-weight:700;margin-bottom:8px}
+.ddesc{font-size:13px;line-height:1.9;color:var(--ink3);margin-bottom:24px}
+.dlbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;margin-top:20px}
+.sizes{display:flex;gap:6px;flex-wrap:wrap}
+.sz{padding:8px 16px;border:1px solid var(--sand3);border-radius:var(--r);font-size:11px;cursor:pointer;font-family:'Satoshi',sans-serif;font-weight:700;transition:all .2s var(--ease);background:white}
+.sz.on,.sz:hover{background:var(--ink);color:white;border-color:var(--ink)}
+.qty-row{display:flex;align-items:center;border:1px solid var(--sand3);border-radius:var(--r);width:fit-content;margin-top:8px}
+.qb{width:36px;height:36px;background:none;border:none;cursor:pointer;font-size:18px;transition:background .15s}
+.qb:hover{background:var(--sand2)}
+.qv{width:44px;text-align:center;font-size:14px;font-weight:700;border:none;outline:none;font-family:'Satoshi',sans-serif;background:transparent}
+.btn-addd{background:var(--ink);color:white;border:none;width:100%;padding:15px;font-family:'Satoshi',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);margin-top:24px;transition:all .25s var(--ease)}
+.btn-addd:hover{background:var(--rose3)}
+.btn-wad{background:white;color:#25D366;border:1px solid #25D366;width:100%;padding:12px;font-family:'Satoshi',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);margin-top:8px;transition:all .25s}
+.btn-wad:hover{background:#25D366;color:white}
+.dfeats{margin-top:24px;border-top:1px solid var(--sand3);padding-top:18px;display:flex;flex-direction:column;gap:9px}
+.dfeat{font-size:12px;color:var(--ink3);display:flex;align-items:center;gap:10px}
+.fdot{width:5px;height:5px;border-radius:50%;background:var(--rose3);flex-shrink:0}
+
+/* CHECKOUT */
+.cow{max-width:1000px;margin:0 auto;padding:60px 40px;display:grid;grid-template-columns:1fr 380px;gap:40px}
+.fcard{background:var(--white);border:1px solid var(--sand3);border-radius:var(--rl);padding:32px}
+.fctitle{font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700;margin-bottom:24px}
+.fsec{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);padding-bottom:10px;border-bottom:1px solid var(--sand2);margin-bottom:16px;margin-top:24px}
+.fg{margin-bottom:12px}
+.fg label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:4px}
+.fg input,.fg select,.fg textarea{width:100%;padding:10px 12px;border:1px solid var(--sand3);border-radius:var(--r);font-size:13px;font-family:'Satoshi',sans-serif;color:var(--ink);background:white;transition:border-color .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--rose3)}
+.fgr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.payopts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.popt{padding:14px 12px;border:1px solid var(--sand3);border-radius:var(--r);cursor:pointer;text-align:center;font-size:10px;letter-spacing:.5px;text-transform:uppercase;transition:all .2s var(--ease);color:var(--ink3);font-family:'Satoshi',sans-serif}
+.popt.on,.popt:hover{border-color:var(--rose3);color:var(--rose3);background:rgba(181,98,58,0.04)}
+.poicon{font-size:20px;margin-bottom:6px}
+.btn-pay{background:var(--olive);color:white;border:none;width:100%;padding:16px;font-family:'Satoshi',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);margin-top:24px;transition:all .25s var(--ease)}
+.btn-pay:hover{background:var(--ink2)}
+.scard{background:var(--white);border:1px solid var(--sand3);border-radius:var(--rl);padding:24px;position:sticky;top:80px}
+.sitem{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--sand2);align-items:center}
+.simg{width:50px;height:58px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden}
+.simg img{width:100%;height:100%;object-fit:cover}
+.sname{font-size:13px;font-weight:700;font-family:'Clash Display',sans-serif;flex:1}
+.smeta{font-size:11px;color:var(--ink3);font-weight:400;font-family:'Satoshi',sans-serif}
+.sprice{font-size:13px;font-weight:700;margin-left:auto;flex-shrink:0}
+.stotals{padding-top:14px}
+.srow{display:flex;justify-content:space-between;font-size:12px;color:var(--ink3);margin-bottom:8px}
+.sgrand{display:flex;justify-content:space-between;font-family:'Clash Display',sans-serif;font-size:18px;font-weight:700;padding-top:10px;border-top:1px solid var(--sand3)}
+.smin{background:rgba(181,98,58,0.07);border-radius:var(--r);padding:10px;font-size:11px;color:var(--rose3);text-align:center;margin-bottom:12px}
+
+/* INFO */
+.ihero{background:var(--white);padding:80px 40px;border-bottom:1px solid var(--sand3)}
+.ihi{max-width:720px}
+.ihtag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--rose3);margin-bottom:12px}
+.ihh1{font-family:'Clash Display',sans-serif;font-size:48px;font-weight:700;line-height:1.1;margin-bottom:16px}
+.ihp{font-size:14px;color:var(--ink3);line-height:1.9}
+.ibody{max-width:820px;margin:0 auto;padding:60px 40px}
+.iblock{margin-bottom:40px}
+.iblock h2{font-family:'Clash Display',sans-serif;font-size:22px;font-weight:700;margin-bottom:14px}
+.iblock h3{font-size:14px;font-weight:700;margin-bottom:10px;margin-top:20px}
+.iblock p{font-size:13px;line-height:1.9;color:var(--ink3);margin-bottom:10px}
+.iblock ul,.iblock ol{font-size:13px;line-height:1.9;color:var(--ink3);padding-left:20px}
+.iblock ul li,.iblock ol li{margin-bottom:8px}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:20px}
+.scard2{background:var(--white);border:1px solid var(--sand3);border-radius:var(--rl);padding:20px;transition:transform .3s var(--ease)}
+.scard2:hover{transform:translateY(-3px)}
+.snum{font-family:'Clash Display',sans-serif;font-size:34px;font-weight:700;color:var(--rose);line-height:1;margin-bottom:8px}
+.scard2 h3{font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:6px;margin-top:0}
+.scard2 p{font-size:12px;color:var(--ink3);line-height:1.8;margin:0}
+.lgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.lcard{background:var(--white);border:1px solid var(--sand3);border-radius:var(--rl);padding:28px;transition:transform .3s var(--ease)}
+.lcard:hover{transform:translateY(-3px)}
+.lnum{font-family:'Clash Display',sans-serif;font-size:40px;font-weight:700;color:var(--rose);line-height:1;margin-bottom:12px}
+.lcard h3{font-size:17px;font-weight:700;font-family:'Clash Display',sans-serif;margin-bottom:16px}
+.ldetail{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.lrow{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ink3)}
+.lbtns{display:flex;gap:8px;flex-wrap:wrap}
+.bmap{background:var(--white);color:var(--ink);border:none;padding:10px 20px;font-family:'Satoshi',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);transition:all .25s;text-decoration:none;display:inline-block}
+.bmap:hover{background:var(--sand2)}
+.brev{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.4);padding:10px 18px;font-family:'Satoshi',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);transition:all .25s;text-decoration:none;display:inline-block}
+.brev:hover{background:rgba(255,255,255,0.1)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:40px}
+.ccard{background:var(--white);border:1px solid var(--sand3);border-radius:var(--rl);padding:20px;transition:transform .3s var(--ease)}
+.ccard:hover{transform:translateY(-3px)}
+.cicon{font-size:22px;margin-bottom:10px}
+.clabel{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+.cval{font-size:13px;font-weight:700}
+.cval a{color:var(--rose3);text-decoration:none}
+.cform{background:var(--white);border:1px solid var(--sand3);border-radius:var(--rl);padding:32px;max-width:560px}
+.legal-body{max-width:820px;margin:0 auto;padding:60px 40px}
+.legal-body h2{font-family:'Clash Display',sans-serif;font-size:20px;font-weight:700;margin-bottom:12px;margin-top:32px}
+.legal-body h3{font-size:14px;font-weight:700;margin-bottom:8px;margin-top:20px}
+.legal-body p{font-size:13px;line-height:1.9;color:var(--ink3);margin-bottom:10px}
+.legal-body ul{font-size:13px;line-height:1.9;color:var(--ink3);padding-left:20px;margin-bottom:10px}
+.legal-body ul li{margin-bottom:6px}
+.contact-box{background:var(--sand);border:1px solid var(--sand3);border-radius:var(--rl);padding:20px;margin-top:20px;font-size:13px;color:var(--ink3)}
+.qs-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:48px}
+.qs-visual{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qs-box{border-radius:var(--rl);display:flex;align-items:center;justify-content:center;font-size:52px;background:var(--sand2);transition:transform .3s var(--ease);height:160px}
+.qs-box:hover{transform:scale(1.03)}
+.qs-vals{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+.qs-val{background:var(--white);border:1px solid var(--sand3);border-radius:var(--rl);padding:20px;text-align:center}
+.qs-val-icon{font-size:28px;margin-bottom:8px}
+.qs-val-title{font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:4px}
+.qs-val-desc{font-size:11px;color:var(--ink3);line-height:1.6}
+
+/* PAGE CONTENT */
+.page-content{font-size:14px;line-height:1.9;color:var(--ink3)}
+.page-content h2{font-family:'Clash Display',sans-serif;font-size:24px;color:var(--ink);margin:24px 0 12px}
+.page-content p{margin-bottom:12px}
+.page-content ul{padding-left:20px;margin-bottom:12px}
+.page-content strong{color:var(--ink);font-weight:700}
+
+/* FOOTER */
+footer{background:var(--olive);color:white;padding:64px 40px 24px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.flogo{cursor:pointer;display:block;background:none;border:none;padding:0;margin-bottom:12px}
+.flogo img{height:32px;width:auto;filter:brightness(0) invert(1)}
+.fdesc{font-size:12px;line-height:1.9;color:rgba(255,255,255,0.55);margin-bottom:16px}
+.fsocs{display:flex;gap:12px}
+.fsoc{color:rgba(255,255,255,0.6);font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:color .2s}
+.fsoc:hover{color:white}
+.fcol h4{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:16px}
+.fcol a{display:block;font-size:12px;color:rgba(255,255,255,0.7);text-decoration:none;margin-bottom:10px;cursor:pointer;transition:color .2s;background:none;border:none;font-family:'Satoshi',sans-serif;text-align:left}
+.fcol a:hover{color:white}
+.fbot{border-top:1px solid rgba(255,255,255,0.15);padding-top:20px;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.45);flex-wrap:wrap;gap:8px}
+.fbot a{color:rgba(255,255,255,0.45);text-decoration:none;transition:color .2s}
+.fbot a:hover{color:white}
+#footerDynLinks{display:flex;flex-direction:column;gap:0}
+
+/* ── COLORS ── */
+.colors-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.color-opt{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
+.color-circle{width:28px;height:28px;border-radius:50%;border:2px solid transparent;transition:all .2s;box-shadow:0 0 0 1px var(--sand3)}
+.color-opt.on .color-circle,.color-opt:hover .color-circle{box-shadow:0 0 0 2px var(--ink)}
+.color-name{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3)}
+/* product card color dots */
+.pcard-colors{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+.pcard-dot{width:14px;height:14px;border-radius:50%;box-shadow:0 0 0 1px var(--sand3)}
+
+/* ── NAV ICONS ── */
+.nav-icon-btn{background:none;border:none;cursor:pointer;color:var(--ink);display:flex;align-items:center;gap:6px;padding:8px;border-radius:var(--r);transition:all .2s;position:relative}
+.nav-icon-btn:hover{background:var(--sand2)}
+.cart-icon-btn .cbadge{position:absolute;top:-4px;right:-4px;width:16px;height:16px;font-size:9px}
+
+/* ── AUTH MODAL ── */
+.auth-ov{display:none;position:fixed;inset:0;background:rgba(17,17,17,0.6);z-index:700;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.auth-ov.open{display:flex;animation:pgIn .3s var(--ease)}
+.auth-box{background:var(--white);border-radius:8px;width:420px;max-width:95vw;padding:40px;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.15)}
+.auth-x{position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink3);padding:4px 8px;border-radius:4px}
+.auth-x:hover{background:var(--sand2)}
+.auth-tabs{display:flex;border-bottom:1px solid var(--sand3);margin-bottom:24px}
+.auth-tab{flex:1;padding:10px;background:none;border:none;font-family:'Satoshi',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;color:var(--ink3);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+.auth-tab.active{color:var(--ink);border-bottom-color:var(--ink);font-weight:700}
+.auth-panel{display:none}
+.auth-panel.active{display:block}
+.auth-fg{margin-bottom:14px}
+.auth-fg label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:5px;font-weight:700}
+.auth-fg input{width:100%;padding:11px 14px;border:1px solid var(--sand3);border-radius:var(--r);font-size:14px;font-family:'Satoshi',sans-serif;color:var(--ink);transition:border-color .2s}
+.auth-fg input:focus{outline:none;border-color:var(--ink)}
+.auth-btn{width:100%;background:var(--olive);color:white;border:none;padding:13px;font-family:'Satoshi',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);margin-top:6px;transition:all .2s}
+.auth-btn:hover{opacity:.85}
+.auth-btn:disabled{opacity:.6;cursor:not-allowed}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--ink3);font-size:11px}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--sand3)}
+.btn-google{width:100%;background:white;color:var(--ink);border:1px solid var(--sand3);padding:12px;font-family:'Satoshi',sans-serif;font-size:12px;cursor:pointer;border-radius:var(--r);display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s}
+.btn-google:hover{border-color:var(--ink);background:var(--sand)}
+.auth-err{background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.2);border-radius:var(--r);padding:9px 12px;font-size:12px;color:#C0392B;margin-bottom:12px;display:none}
+.auth-err.show{display:block}
+.auth-ok{background:rgba(59,109,17,0.08);border:1px solid rgba(59,109,17,0.2);border-radius:var(--r);padding:9px 12px;font-size:12px;color:#3B6D11;margin-bottom:12px;display:none}
+.auth-ok.show{display:block}
+
+/* ── MI CUENTA ── */
+.account-wrap{max-width:900px;margin:0 auto;padding:60px 40px}
+.account-grid{display:grid;grid-template-columns:240px 1fr;gap:32px}
+.account-sidebar{background:var(--white);border:1px solid var(--sand3);border-radius:var(--rl);padding:24px;height:fit-content}
+.account-avatar{width:64px;height:64px;background:var(--olive);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-family:'Clash Display',sans-serif;font-size:24px;font-weight:700;margin:0 auto 12px}
+.account-name{text-align:center;font-family:'Clash Display',sans-serif;font-size:18px;font-weight:700;margin-bottom:4px}
+.account-email{text-align:center;font-size:12px;color:var(--ink3);margin-bottom:20px}
+.account-nav-item{padding:10px 14px;border-radius:var(--r);font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;background:none;border:none;font-family:'Satoshi',sans-serif;color:var(--ink3);text-align:left;width:100%;transition:all .2s;display:flex;align-items:center;gap:8px}
+.account-nav-item:hover{background:var(--sand);color:var(--ink)}
+.account-nav-item.active{background:var(--olive);color:white}
+.btn-logout-client{width:100%;margin-top:16px;padding:10px;background:none;border:1px solid var(--sand3);border-radius:var(--r);font-family:'Satoshi',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;color:var(--ink3);transition:all .2s}
+.btn-logout-client:hover{border-color:#C0392B;color:#C0392B}
+.account-content{background:var(--white);border:1px solid var(--sand3);border-radius:var(--rl);padding:28px}
+.account-panel{display:none}
+.account-panel.active{display:block}
+.account-section-title{font-family:'Clash Display',sans-serif;font-size:20px;font-weight:700;margin-bottom:20px}
+.order-card{border:1px solid var(--sand3);border-radius:var(--rl);padding:20px;margin-bottom:12px;transition:border-color .2s}
+.order-card:hover{border-color:var(--ink)}
+.order-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px}
+.order-num{font-family:'Clash Display',sans-serif;font-size:16px;font-weight:700}
+.order-date{font-size:12px;color:var(--ink3)}
+.order-items-list{font-size:12px;color:var(--ink3);margin-bottom:10px}
+.order-footer{display:flex;justify-content:space-between;align-items:center}
+.order-total{font-size:15px;font-weight:700}
+.order-estado{display:inline-block;padding:4px 10px;border-radius:20px;font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:700}
+.order-estado.pendiente{background:rgba(17,17,17,0.08);color:var(--ink2)}
+.order-estado.confirmado{background:rgba(59,109,17,0.12);color:#3B6D11}
+.order-estado.despachado{background:rgba(52,120,180,0.12);color:#2A6DB5}
+.order-estado.entregado{background:rgba(59,109,17,0.2);color:#2A5A0A}
+.order-estado.cancelado{background:rgba(192,57,43,0.12);color:#C0392B}
+.no-orders{text-align:center;padding:48px 20px;color:var(--ink3)}
+.no-orders .icon{font-size:40px;margin-bottom:12px}
+@media(max-width:640px){.account-grid{grid-template-columns:1fr}.account-wrap{padding:40px 20px}}
+
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:28px;right:28px;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer;z-index:400;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:all .25s var(--ease);border:none;text-decoration:none;animation:waPulse 2s ease-in-out infinite}
+.wa-float:hover{transform:scale(1.1)}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)}50%{box-shadow:0 4px 32px rgba(37,211,102,0.65)}}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--ink);color:white;padding:12px 28px;border-radius:var(--r);font-size:11px;letter-spacing:1px;z-index:999;transition:transform .3s var(--ease);border-left:3px solid var(--rose3);white-space:nowrap;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* LOADING SKELETON */
+.skeleton{background:linear-gradient(90deg,var(--sand2) 25%,var(--sand3) 50%,var(--sand2) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:var(--rl)}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel-card{height:320px;margin-bottom:8px}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{grid-template-columns:auto auto}
+  .nav-center{display:none}
+  .mob-btn{display:block}
+  .hero-right-grid{display:none}
+  .hh1{font-size:44px}
+  .cats-grid{grid-template-columns:repeat(2,1fr)}
+  .ctile{height:45vh;min-height:280px}
+  .clbl-name{font-size:24px}
+  .dw{grid-template-columns:1fr;gap:40px}
+  .dgal{grid-template-columns:1fr}
+  .dthumbs{flex-direction:row}
+  .cow{grid-template-columns:1fr}
+  .ed-inner{grid-template-columns:1fr}
+  .edvis{display:none}
+  .ftop{grid-template-columns:1fr 1fr}
+  .tslide{flex:0 0 calc(50% - 8px)}
+  .lgrid{grid-template-columns:1fr}
+  .qs-grid{grid-template-columns:1fr}
+  .qs-vals{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .carousel-track .pcard{flex:0 0 calc(33.33% - 11px)}
+}
+@media(max-width:640px){
+  nav{padding:0 16px}
+  .nav-center{display:none}
+  .mob-btn{display:block}
+  .mob-search-btn{display:flex}
+  #navUserBtn{display:none}
+  .hero{height:calc(100svh - 100px);min-height:480px}
+  .hero-content{padding:0 24px}
+  .hh1{font-size:32px}
+  .hp{font-size:13px}
+  .ihero{padding:40px 20px}
+  .sec,.ibody,.legal-body,.cow,.dw{padding:40px 20px}
+  .ed{padding:40px 20px}
+  .announce{font-size:9px;letter-spacing:.5px;padding:6px 12px;word-spacing:-1px}
+  .bstrip{padding:28px 20px}
+  .blist{grid-template-columns:repeat(2,1fr);gap:0}
+  .bitem{padding:16px 12px;border-right:1px solid var(--sand3);border-bottom:1px solid var(--sand3)}
+  .bitem:nth-child(2n){border-right:none}
+  .bitem:nth-child(3),.bitem:nth-child(4){border-bottom:none}
+  .bitem-icon{margin-bottom:10px}
+  .bitem-icon svg{width:28px;height:28px}
+  .bitem-title{font-size:10px;letter-spacing:1px}
+  .bitem-desc{font-size:11px}
+  .cats-grid{grid-template-columns:repeat(2,1fr)}
+  .ctile{height:40vh;min-height:220px}
+  .clbl-name{font-size:20px}
+  .clbl{padding:16px 16px 24px}
+  .sechd{padding:0 20px!important;margin-top:40px!important;margin-bottom:24px!important}
+  .sectitle{font-size:28px}
+  .carousel-track .pcard{flex:0 0 calc(60% - 8px)}
+  .tslide{flex:0 0 100%}
+  .stats{grid-template-columns:repeat(2,1fr);gap:0}
+  .stats>div{padding:20px;border-right:1px solid var(--sand3);border-bottom:1px solid var(--sand3)}
+  .stats>div:nth-child(2n){border-right:none}
+  .stat-num{font-size:28px}
+  footer{padding:40px 20px 20px}
+  .ftop{grid-template-columns:1fr}
+  .qs-vals{grid-template-columns:1fr}
+  .lgrid{grid-template-columns:1fr}
+  .account-grid{grid-template-columns:1fr}
+  .account-wrap{padding:32px 20px}
+  .fgrow,.fgrow3{grid-template-columns:1fr}
+  .payopts{grid-template-columns:1fr}
+  .cow{padding:32px 20px}
+  .dw{padding:32px 20px}
+}
+</style>
+</head>
+<body>
+
+<div class="announce" id="announceBar">Compra mayorista · Monto mínimo $120.000 · Envíos a todo el país</div>
+
+<nav id="nav">
+  <!-- LOGO -->
+  <button class="logo" onclick="go('home')">
+    <img src="https://txiplxxnvgpryujtcgem.supabase.co/storage/v1/object/public/assets/Logo%20horizontal.jpg" alt="Vivagis" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span style="display:none;font-family:'Clash Display',sans-serif;font-size:20px;font-weight:700;letter-spacing:3px;color:var(--ink)">VIVAGIS</span>
+  </button>
+
+  <!-- CENTER: LINKS + SEARCH -->
+  <div class="nav-center">
+    <div class="nav-links" id="navLinks">
+      <a onclick="go('home')" id="nl-home">Inicio</a>
+
+      <!-- CATALOGO DROPDOWN -->
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn" id="nl-shop">
+          Catálogo
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" id="catDropdown">
+          <button class="nav-drop-item nav-drop-all" onclick="filterAndGo('Todos')">
+            <span class="drop-emoji">✦</span> Ver todo el catálogo
+          </button>
+          <div class="nav-drop-divider"></div>
+          <div id="catDropdownItems">
+            <!-- Se carga dinámicamente -->
+          </div>
+        </div>
+      </div>
+
+      <a onclick="go('como-comprar')" id="nl-como-comprar">Cómo Comprar</a>
+      <a onclick="go('locales')" id="nl-locales">Locales</a>
+      <a onclick="go('contacto')" id="nl-contacto">Contacto</a>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-wrap" style="margin-left:16px">
+      <div class="nav-search">
+        <input type="text" id="navSearchInput" placeholder="¿Qué buscás?" 
+          autocomplete="new-password" 
+          autocorrect="off" autocapitalize="off" spellcheck="false"
+          readonly
+          onfocus="this.removeAttribute('readonly')"
+          oninput="doSearch(this.value)" 
+          onkeydown="if(event.key==='Enter')searchEnter()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" onclick="searchEnter()"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- RIGHT: USER + CART -->
+  <div class="nav-r">
+    <button class="nav-icon-btn" onclick="go('mi-cuenta')" id="navUserBtn" title="Mi cuenta">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span id="navUserName" style="display:none;font-size:11px;max-width:80px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
+    </button>
+    <button class="nav-icon-btn cart-icon-btn" onclick="openCart()" title="Carrito">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="cbadge" id="cBadge">0</span>
+    </button>
+    <button class="mob-search-btn" onclick="toggleMobSearch()" title="Buscar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <button class="mob-btn" onclick="toggleMob()">☰</button>
+  </div>
+</nav>
+
+<!-- MOBILE SEARCH BAR -->
+<div class="mob-search-bar" id="mobSearchBar">
+  <div style="display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--white);border-bottom:1px solid var(--sand3)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" id="mobSearchInput" placeholder="Buscar productos..." autocomplete="off" autocorrect="off" spellcheck="false"
+      style="flex:1;border:none;outline:none;font-family:'Satoshi',sans-serif;font-size:14px;color:var(--ink)"
+      oninput="doSearchMob(this.value)"
+      onkeydown="if(event.key==='Enter'){searchEnterMob();closeMobSearch()}">
+    <button onclick="closeMobSearch()" style="background:none;border:none;cursor:pointer;color:var(--ink3);font-size:18px;padding:0 4px">×</button>
+  </div>
+  <div class="search-results" id="mobSearchResults" style="position:relative;top:0;min-width:100%;border-radius:0;border-left:none;border-right:none;border-top:none"></div>
+</div>
+
+<div class="mob-menu" id="mobMenu">
+  <!-- NAVEGACIÓN PRINCIPAL -->
+  <div class="mob-section">
+    <a class="mob-link" onclick="go('home');closeMob()">Inicio</a>
+    <a class="mob-link" onclick="go('shop');closeMob()">Ver todo el catálogo</a>
+
+    <!-- CATEGORÍAS COLAPSABLES -->
+    <div class="mob-cats-toggle" onclick="toggleMobCats()">
+      Categorías
+      <svg id="mobCatsArrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="transition:transform .2s"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="mob-cats-list" id="mobCatLinks" style="display:none"></div>
+
+    <a class="mob-link" onclick="go('como-comprar');closeMob()">Cómo comprar</a>
+    <a class="mob-link" onclick="go('locales');closeMob()">Locales</a>
+    <a class="mob-link" onclick="go('contacto');closeMob()">Contacto</a>
+  </div>
+
+  <!-- SECUNDARIOS -->
+  <div class="mob-section mob-section-secondary">
+    <a class="mob-link-sm" onclick="go('quienes-somos');closeMob()">Quiénes somos</a>
+    <a class="mob-link-sm" onclick="go('faq');closeMob()">Preguntas frecuentes</a>
+    <div id="mobDynLinks"></div>
+  </div>
+
+  <!-- CUENTA -->
+  <div class="mob-section mob-account-section" id="mobAccountSection">
+    <!-- Se actualiza dinámicamente según si hay sesión o no -->
+    <div id="mobGuestBtns">
+      <button class="mob-auth-btn mob-auth-primary" onclick="closeMob();openAuth('login')">Iniciar sesión</button>
+      <button class="mob-auth-btn mob-auth-secondary" onclick="closeMob();openAuth('register')">Crear cuenta</button>
+    </div>
+    <div id="mobUserInfo" style="display:none">
+      <div class="mob-user-greeting" id="mobUserGreeting">Hola!</div>
+      <a class="mob-link" onclick="go('mi-cuenta');closeMob()">Mi cuenta</a>
+      <a class="mob-link" onclick="logoutClient();closeMob()">Cerrar sesión</a>
+    </div>
+  </div>
+</div>
+
+<!-- HOME -->
+<div class="page active" id="pg-home">
+  <!-- HERO DINÁMICO -->
+  <div class="hero no-img" id="heroSection">
+    <div class="hero-content">
+      <div class="htag" id="heroTag">Fabricantes y mayoristas</div>
+      <h1 class="hh1" id="heroH1">Moda femenina que <em>inspira</em> tu negocio</h1>
+      <p class="hp" id="heroP">Somos fabricantes mayoristas de indumentaria femenina. Desde prendas básicas hasta importadas y personalizadas.</p>
+      <div class="hbtns" id="heroBtn">
+        <button class="bf" onclick="go('shop')">Ver catálogo</button>
+        <button class="bg-dark" onclick="go('como-comprar')">Cómo comprar</button>
+      </div>
+    </div>
+    <div class="hero-right-grid" id="heroGrid">
+      <div class="hi tall" style="background:#EDE0D4">👗</div>
+      <div class="hi short" style="background:#DDE8DA">✨</div>
+      <div class="hi short" style="background:#E4DEF0">🧥</div>
+    </div>
+  </div>
+
+  <div class="bstrip">
+    <div class="blist">
+      <div class="bitem">
+        <div class="bitem-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="bitem-title">Envíos a todo el país</div>
+        <div class="bitem-desc">Desde CABA y Avellaneda a todo el país</div>
+      </div>
+      <div class="bitem">
+        <div class="bitem-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="bitem-title">Fabricación propia</div>
+        <div class="bitem-desc">Calidad garantizada en cada prenda</div>
+      </div>
+      <div class="bitem">
+        <div class="bitem-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div class="bitem-title">¿Tenés alguna duda?</div>
+        <div class="bitem-desc">Atención personalizada por WhatsApp</div>
+      </div>
+      <div class="bitem">
+        <div class="bitem-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <div class="bitem-title">2 locales físicos</div>
+        <div class="bitem-desc">Visitanos en CABA y Avellaneda</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mwrap">
+    <div class="mtrack" id="marqueeTrack">
+      <div class="minner" id="marqueeInner">
+        <s>New In</s><s class="ac">✦</s><s>Importados</s><s class="ac">✦</s>
+        <s>Sweaters</s><s class="ac">✦</s><s>Camperas</s><s class="ac">✦</s>
+        <s>Buzos</s><s class="ac">✦</s><s>Camisas</s><s class="ac">✦</s>
+        <s>Pantalones</s><s class="ac">✦</s><s>Vestidos</s><s class="ac">✦</s>
+        <s>Mayorista</s><s class="ac">✦</s><s>Avellaneda · CABA</s><s class="ac">✦</s>
+        <s>New In</s><s class="ac">✦</s><s>Importados</s><s class="ac">✦</s>
+        <s>Sweaters</s><s class="ac">✦</s><s>Camperas</s><s class="ac">✦</s>
+        <s>Buzos</s><s class="ac">✦</s><s>Camisas</s><s class="ac">✦</s>
+        <s>Pantalones</s><s class="ac">✦</s><s>Vestidos</s><s class="ac">✦</s>
+        <s>Mayorista</s><s class="ac">✦</s><s>Avellaneda · CABA</s><s class="ac">✦</s>
+      </div>
+    </div>
+  </div>
+
+  <div class="rv">
+    <div class="sechd" style="padding:0 40px;margin-bottom:32px;margin-top:64px">
+      <h2 class="sectitle">Explorá por<br><em>categoría</em></h2>
+      <button class="seclink" onclick="go('shop')">Ver todo →</button>
+    </div>
+    <div class="cats-grid" id="catsGrid">
+      <div class="ctile" style="background:#F0F0F0"><div class="ctile-overlay"></div><div class="clbl"><div class="clbl-name" style="color:rgba(255,255,255,0.5)">Cargando...</div></div></div>
+    </div>
+  </div>
+
+  <div class="sec rv" style="padding-top:64px">
+    <div class="sechd">
+      <h2 class="sectitle">Últimos<br><em>ingresos</em></h2>
+      <button class="seclink" onclick="go('shop')">Ver catálogo →</button>
+    </div>
+    <div class="carousel-wrap">
+      <button class="car-btn car-prev" onclick="carPrev('feat')">‹</button>
+      <div class="carousel-track" id="featTrack"></div>
+      <button class="car-btn car-next" onclick="carNext('feat')">›</button>
+    </div>
+  </div>
+
+  <div class="sec rv" style="padding-top:0">
+    <div class="sechd">
+      <h2 class="sectitle">Más<br><em>vendidos</em></h2>
+    </div>
+    <div class="carousel-wrap">
+      <button class="car-btn car-prev" onclick="carPrev('best')">‹</button>
+      <div class="carousel-track" id="bestTrack"></div>
+      <button class="car-btn car-next" onclick="carNext('best')">›</button>
+    </div>
+  </div>
+
+  <div class="stats-strip rv">
+    <div class="stats">
+      <div><div class="stat-num" data-target="120000" data-prefix="$">$0</div><div class="stat-label">Monto mínimo</div></div>
+      <div><div class="stat-num">2</div><div class="stat-label">Locales físicos</div></div>
+      <div><div class="stat-num">10<span>+</span></div><div class="stat-label">Categorías</div></div>
+      <div><div class="stat-num">24<span>hs</span></div><div class="stat-label">Despacho</div></div>
+    </div>
+  </div>
+
+  <div class="sec rv">
+    <div class="sechd"><h2 class="sectitle">Lo que dicen<br><em>nuestras clientas</em></h2></div>
+    <div class="tcarousel">
+      <div class="ttrack" id="ttrack">
+        <div class="tslide"><div class="tcard"><div class="tstars">★★★★★</div><p class="ttext">"Buenísima la ropa y económica."</p><div class="tname">— Claudia</div></div></div>
+        <div class="tslide"><div class="tcard"><div class="tstars">★★★★★</div><p class="ttext">"El local es super amplio y hermoso. Muy cómodo para comprar."</p><div class="tname">— Erendira</div></div></div>
+        <div class="tslide"><div class="tcard"><div class="tstars">★★★★★</div><p class="ttext">"Excelentes precios, atención y calidad."</p><div class="tname">— Martina</div></div></div>
+        <div class="tslide"><div class="tcard"><div class="tstars">★★★★★</div><p class="ttext">"Siempre encuentro novedades. Las revendedoras me preguntan dónde compro."</p><div class="tname">— Valeria</div></div></div>
+        <div class="tslide"><div class="tcard"><div class="tstars">★★★★★</div><p class="ttext">"La atención es excelente y los precios mayoristas muy competitivos."</p><div class="tname">— Carolina</div></div></div>
+      </div>
+      <div class="tdots" id="tdots"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CATÁLOGO -->
+<div class="page" id="pg-shop">
+  <div class="ihero"><div class="ihi">
+    <div class="ihtag">Catálogo mayorista</div>
+    <h1 class="ihh1">Toda la colección</h1>
+    <p class="ihp" id="shopMinText">Monto mínimo de compra: $120.000</p>
+  </div></div>
+  <div class="sec">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px">
+      <div id="fbar" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+      <select style="border:1px solid var(--sand3);border-radius:var(--r);padding:7px 12px;font-size:11px;font-family:'Satoshi',sans-serif;background:white;cursor:pointer;color:var(--ink)" onchange="applySort(this.value)">
+        <option value="">Ordenar</option>
+        <option value="asc">Precio: menor a mayor</option>
+        <option value="desc">Precio: mayor a menor</option>
+        <option value="az">A → Z</option>
+      </select>
+    </div>
+    <div class="pgrid" id="shopGrid"></div>
+  </div>
+</div>
+
+<!-- DETALLE -->
+<div class="page" id="pg-detail"><div id="detailWrap"></div></div>
+
+<!-- CHECKOUT -->
+<div class="page" id="pg-checkout">
+  <div class="ihero"><div class="ihi">
+    <div class="ihtag">Compra segura</div>
+    <h1 class="ihh1" style="font-size:36px">Finalizar pedido</h1>
+  </div></div>
+  <div class="cow">
+    <div><div class="fcard">
+      <div class="fctitle">Tus datos</div>
+      <div class="fsec">Información personal</div>
+      <div class="fgr">
+        <div class="fg"><label>Nombre</label><input id="co-nombre" type="text" placeholder="Tu nombre"></div>
+        <div class="fg"><label>Apellido</label><input id="co-apellido" type="text" placeholder="Tu apellido"></div>
+      </div>
+      <div class="fg"><label>Email</label><input id="co-email" type="email" placeholder="email@ejemplo.com"></div>
+      <div class="fg"><label>WhatsApp</label><input id="co-tel" type="tel" placeholder="+54 11 6448-0771"></div>
+      <div class="fsec">Dirección de envío</div>
+      <div class="fg"><label>Provincia</label>
+        <select id="co-provincia"><option value="">Seleccioná</option><option>Buenos Aires</option><option>CABA</option><option>Córdoba</option><option>Santa Fe</option><option>Mendoza</option><option>Otra</option></select>
+      </div>
+      <div class="fgr">
+        <div class="fg"><label>Ciudad</label><input id="co-ciudad" type="text" placeholder="Ciudad"></div>
+        <div class="fg"><label>Código postal</label><input id="co-cp" type="text" placeholder="1234"></div>
+      </div>
+      <div class="fg"><label>Dirección</label><input id="co-direccion" type="text" placeholder="Calle y número"></div>
+      <div class="fsec">Transporte</div>
+      <div class="fg"><label>Empresa de transporte</label>
+        <select id="co-transporte"><option value="">Seleccioná</option><option>Vía Cargo</option><option>Del Monte</option><option>OCA</option><option>Andreani</option><option>Correo Argentino</option><option>Otro</option></select>
+      </div>
+      <div class="fsec">Método de pago</div>
+      <div class="payopts" id="payopts">
+        <div class="popt on" onclick="selPay(this)"><div class="poicon">🏦</div>Transferencia</div>
+        <div class="popt" onclick="selPay(this)"><div class="poicon">🏦</div>Depósito</div>
+        <div class="popt" onclick="selPay(this)"><div class="poicon">💵</div>Efectivo</div>
+        <div class="popt" onclick="selPay(this)"><div class="poicon">💬</div>Acordar por WA</div>
+      </div>
+      <button class="btn-pay" onclick="placeOrder()">Confirmar pedido →</button>
+      <button class="btn-wa" style="margin-top:8px" onclick="sendWA()">💬 Finalizar por WhatsApp</button>
+    </div></div>
+    <div><div class="scard">
+      <div class="fctitle" style="font-size:18px;margin-bottom:4px">Resumen</div>
+      <p style="font-size:11px;color:var(--ink3);margin-bottom:16px" id="coMinText">Mínimo $120.000</p>
+      <div id="checkItems"></div>
+      <div class="stotals">
+        <div class="srow"><span>Subtotal</span><span id="cSub">$0</span></div>
+        <div class="srow"><span>Envío</span><span>A calcular</span></div>
+        <div class="sgrand"><span>Total</span><span id="cTotal">$0</span></div>
+      </div>
+      <div class="smin" id="sminNote" style="display:none;margin-top:12px">Mínimo de compra: $120.000</div>
+    </div></div>
+  </div>
+</div>
+
+<!-- CÓMO COMPRAR -->
+<div class="page" id="pg-como-comprar">
+  <div class="ihero"><div class="ihi">
+    <div class="ihtag">Guía de compra</div>
+    <h1 class="ihh1">¿Cómo comprar?</h1>
+    <p class="ihp">El proceso es simple. Elegís, pedís y en pocos días tenés tus prendas listas para vender.</p>
+  </div></div>
+  <div class="ibody">
+    <div class="sgrid">
+      <div class="scard2"><div class="snum">01</div><h3>Elegí tus productos</h3><p>Seleccioná las prendas que querés comprar por mayor desde nuestro catálogo.</p></div>
+      <div class="scard2"><div class="snum">02</div><h3>Agregalos al carrito</h3><p>Hacé clic en "Agregar al carrito" en cada prenda que te interese.</p></div>
+      <div class="scard2"><div class="snum">03</div><h3>Revisá el monto mínimo</h3><p>La compra mínima es de $120.000. Podés seguir sumando productos.</p></div>
+      <div class="scard2"><div class="snum">04</div><h3>Completá tus datos</h3><p>Ingresá tu información de contacto y dirección de entrega.</p></div>
+      <div class="scard2"><div class="snum">05</div><h3>Elegí el transporte</h3><p>Seleccioná: Vía Cargo, Del Monte, OCA, Correo Argentino, etc.</p></div>
+      <div class="scard2"><div class="snum">06</div><h3>Elegí el pago</h3><p>Transferencia, depósito bancario o efectivo.</p></div>
+      <div class="scard2"><div class="snum">07</div><h3>Confirmá tu compra</h3><p>Revisá todos los datos y hacé clic en "Finalizar compra".</p></div>
+      <div class="scard2"><div class="snum">08</div><h3>Te contactamos</h3><p>Recibimos tu pedido y confirmamos el stock disponible por WhatsApp.</p></div>
+      <div class="scard2"><div class="snum">09</div><h3>Datos de pago</h3><p>Una vez confirmado el stock, te enviamos los datos para pagar.</p></div>
+      <div class="scard2"><div class="snum">10</div><h3>Confirmación por mail</h3><p>Te enviamos un correo con todos los detalles de tu pedido.</p></div>
+      <div class="scard2"><div class="snum">11</div><h3>Despachamos</h3><p>Acreditado el pago, despachamos y te enviamos el número de seguimiento.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:40px"><button class="bf-dark" onclick="go('shop')">Ver catálogo →</button></div>
+  </div>
+</div>
+
+<!-- LOCALES -->
+<div class="page" id="pg-locales">
+  <div class="ihero"><div class="ihi">
+    <div class="ihtag">Presencia física</div>
+    <h1 class="ihh1">Nuestros locales</h1>
+    <p class="ihp">Acercate y descubrí toda la colección en persona.</p>
+  </div></div>
+  <div class="ibody">
+    <div class="lgrid">
+      <div class="lcard"><div class="lnum">01</div><h3>Local Avellaneda</h3>
+        <div class="ldetail">
+          <div class="lrow"><span>📍</span><span><strong>Av. Avellaneda 3267</strong></span></div>
+          <div class="lrow"><span>🕒</span><span>Lun–Vie 08:00–17:00 · Sáb 8:30–14:00</span></div>
+          <div class="lrow"><span>📞</span><span><a href="tel:1168757812" style="color:var(--rose3);text-decoration:none">11-6875-7812</a></span></div>
+        </div>
+        <div class="lbtns">
+          <a href="https://maps.app.goo.gl/hQHu6nr7S4jkxG9r5" target="_blank" class="bmap">Ver en mapa</a>
+          <a href="https://g.page/r/CdwZpgizXEWtEAE/review" target="_blank" class="brev">Dejar reseña</a>
+        </div>
+      </div>
+      <div class="lcard"><div class="lnum">02</div><h3>Local CABA</h3>
+        <div class="ldetail">
+          <div class="lrow"><span>📍</span><span><strong>Campana 641, CABA</strong></span></div>
+          <div class="lrow"><span>🕒</span><span>Lun–Vie 7:30–16:30 · Sáb 8:30–13:30</span></div>
+          <div class="lrow"><span>📞</span><span><a href="tel:1125810377" style="color:var(--rose3);text-decoration:none">11-2581-0377</a></span></div>
+        </div>
+        <div class="lbtns">
+          <a href="https://maps.app.goo.gl/rUUjeNNtfjndm8417" target="_blank" class="bmap">Ver en mapa</a>
+          <a href="https://g.page/r/CR1_RN_8jOt-EBM/review" target="_blank" class="brev">Dejar reseña</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACTO -->
+<div class="page" id="pg-contacto">
+  <div class="ihero"><div class="ihi">
+    <div class="ihtag">Atención al cliente</div>
+    <h1 class="ihh1">Contacto</h1>
+    <p class="ihp">Respondemos de lunes a viernes. Para urgencias escribinos por WhatsApp.</p>
+  </div></div>
+  <div class="ibody">
+    <div class="cgrid">
+      <div class="ccard"><div class="cicon">💬</div><div class="clabel">WhatsApp</div><div class="cval"><a href="https://wa.me/541164480771">11-6448-0771</a></div></div>
+      <div class="ccard"><div class="cicon">📧</div><div class="clabel">Email</div><div class="cval"><a href="mailto:info@vivagis.com">info@vivagis.com</a></div></div>
+      <div class="ccard"><div class="cicon">📍</div><div class="clabel">Locales</div><div class="cval" style="font-size:12px">Campana 641 · Av. Avellaneda 3267</div></div>
+      <div class="ccard"><div class="cicon">📸</div><div class="clabel">Instagram</div><div class="cval"><a href="https://instagram.com/Vivagis__" target="_blank">@Vivagis__</a></div></div>
+      <div class="ccard"><div class="cicon">📘</div><div class="clabel">Facebook</div><div class="cval"><a href="https://www.facebook.com/vivagis/" target="_blank">/vivagis</a></div></div>
+      <div class="ccard"><div class="cicon">🎵</div><div class="clabel">TikTok</div><div class="cval"><a href="https://www.tiktok.com/@vivagis_" target="_blank">@vivagis_</a></div></div>
+    </div>
+    <div class="cform">
+      <div class="fctitle">Envianos un mensaje</div>
+      <div class="fg"><label>Nombre y apellido</label><input type="text" placeholder="Tu nombre completo"></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="email@ejemplo.com"></div>
+      <div class="fg"><label>Teléfono</label><input type="tel" placeholder="+54 11 0000-0000"></div>
+      <div class="fg"><label>Mensaje (opcional)</label><textarea style="resize:vertical;min-height:100px" maxlength="400" placeholder="Escribí tu consulta..."></textarea></div>
+      <button class="bf-dark" style="width:100%;padding:14px" onclick="toast('Mensaje enviado. Te respondemos pronto ✓')">Enviar mensaje</button>
+    </div>
+  </div>
+</div>
+
+<!-- QUIÉNES SOMOS -->
+<div class="page" id="pg-quienes-somos">
+  <div class="ihero"><div class="ihi">
+    <div class="ihtag">Nuestra historia</div>
+    <h1 class="ihh1">Quiénes somos</h1>
+    <p class="ihp">Fabricantes y mayoristas de moda femenina con años de experiencia.</p>
+  </div></div>
+  <div class="ibody">
+    <div class="qs-grid">
+      <div class="iblock">
+        <h2>¡Bienvenidas a Viva Gis!</h2>
+        <p>En Viva Gis nos dedicamos a ofrecer moda femenina de calidad para dueñas de showrooms y locales que buscan destacarse. Con años de experiencia como fabricantes y mayoristas, nos hemos ganado la confianza de nuestros clientes por nuestra atención al detalle y compromiso con la excelencia.</p>
+        <p>Nuestra amplia gama de prendas, desde básicos hasta diseños exclusivos e importados, está pensada para adaptarse a las preferencias de tus clientas y elevar la experiencia de compra en tu local o showroom.</p>
+        <p>Contactanos al <a href="https://wa.me/541164480771" style="color:var(--rose3)">11-6448-0771</a> o a <a href="mailto:info@vivagis.com" style="color:var(--rose3)">info@vivagis.com</a>.</p>
+        <p style="margin-top:16px;font-weight:700;color:var(--ink)">¡Gracias por confiar en nosotros! — El equipo de Viva Gis</p>
+      </div>
+      <div class="qs-visual">
+        <div class="qs-box">👗</div><div class="qs-box">✨</div>
+        <div class="qs-box">🧥</div><div class="qs-box">👔</div>
+      </div>
+    </div>
+    <div class="qs-vals">
+      <div class="qs-val"><div class="qs-val-icon">🏭</div><div class="qs-val-title">Fabricación propia</div><div class="qs-val-desc">Producción directa para garantizar calidad y precios competitivos</div></div>
+      <div class="qs-val"><div class="qs-val-icon">✈️</div><div class="qs-val-title">Importados</div><div class="qs-val-desc">Prendas importadas con las últimas tendencias internacionales</div></div>
+      <div class="qs-val"><div class="qs-val-icon">🎨</div><div class="qs-val-title">Personalizados</div><div class="qs-val-desc">Estampados únicos para diferenciar tu negocio</div></div>
+    </div>
+    <div style="text-align:center;margin-top:40px"><button class="bf-dark" onclick="go('shop')">Ver catálogo →</button></div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="page" id="pg-faq">
+  <div class="ihero"><div class="ihi">
+    <div class="ihtag">Centro de ayuda</div>
+    <h1 class="ihh1">Preguntas frecuentes</h1>
+    <p class="ihp">Todo lo que necesitás saber antes de hacer tu primer pedido.</p>
+  </div></div>
+  <div class="ibody">
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuál es el monto mínimo?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">El importe mínimo es de <strong>$120.000</strong>. Podés combinar categorías, modelos y talles libremente.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuáles son las formas de pago?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Aceptamos transferencia bancaria, depósito bancario y efectivo.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cómo se realizan los envíos?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Trabajamos con: Correo Argentino, OCA, Vía Cargo, Chevalier, Pulman, Gral Urquiza y muchos más. Enviamos a todo el país.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuánto tarda en llegar el pedido?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">En general entre <strong>3 a 7 días hábiles</strong> desde la confirmación del pago.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Cuál es el plazo para un cambio?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner"><strong>10 días corridos</strong> desde la recepción. Solo por defecto de fabricación. Contactanos con fotos y número de pedido.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Venden al por menor?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">No, nos especializamos exclusivamente en ventas al por mayor.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">¿Tienen locales físicos?<span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Sí, dos locales: Av. Avellaneda 3267 (Lun–Vie 8:00–17:00, Sáb 8:30–14:00) y Campana 641, CABA (Lun–Vie 7:30–16:30, Sáb 8:30–13:30).</div></div></div>
+    </div>
+    <div style="text-align:center;margin-top:40px"><button class="bf-dark" onclick="sendWA()">💬 Tengo otra pregunta</button></div>
+  </div>
+</div>
+
+<!-- POLÍTICA DE CAMBIOS -->
+<div class="page" id="pg-politica-cambios">
+  <div class="ihero"><div class="ihi"><div class="ihtag">Políticas</div><h1 class="ihh1">Política de cambios</h1></div></div>
+  <div class="legal-body">
+    <p>Los productos podrán ser cambiados <strong>únicamente en caso de defecto de fabricación</strong>. No se aceptan cambios por talle, color o decisión comercial.</p>
+    <p>Plazo: <strong>10 días corridos desde la recepción</strong>.</p>
+    <h2>¿Cómo solicitar un cambio?</h2>
+    <ul><li>Número de pedido</li><li>Producto afectado</li><li>Descripción del defecto</li><li>Fotos claras</li></ul>
+    <div class="contact-box">Contacto: <a href="https://wa.me/541164480771" style="color:var(--rose3)">11-6448-0771</a> · 11-2581-0377 · 11-6875-7812 · info@vivagis.com</div>
+    <h2>Condiciones</h2>
+    <ul><li>Sin usar</li><li>Con etiquetas originales</li><li>Con packaging original</li></ul>
+    <h2>Resolución</h2>
+    <p>Se reemplaza la prenda (según stock). No hay reembolsos en dinero. Los gastos de envío son a cargo del cliente.</p>
+  </div>
+</div>
+
+<!-- PRIVACIDAD -->
+<div class="page" id="pg-privacidad">
+  <div class="ihero"><div class="ihi"><div class="ihtag">Legal</div><h1 class="ihh1">Políticas de privacidad</h1></div></div>
+  <div class="legal-body">
+    <p>Los datos personales registrados serán manejados de forma estrictamente confidencial conforme a la legislación vigente.</p>
+    <h2>Datos personales</h2>
+    <p>Conforme a la Ley Nº 25.326, podés ejercer tu derecho de información, rectificación o cancelación enviando un email a <a href="mailto:info@vivagis.com" style="color:var(--rose3)">info@vivagis.com</a>.</p>
+    <h2>Menores de edad</h2>
+    <p>Nuestros servicios están disponibles únicamente para personas con capacidad legal para contratar.</p>
+  </div>
+</div>
+
+<!-- TÉRMINOS -->
+<div class="page" id="pg-terminos">
+  <div class="ihero"><div class="ihi"><div class="ihtag">Legal</div><h1 class="ihh1">Términos y condiciones</h1><p class="ihp">Válido desde enero 2024 · Gisary SA</p></div></div>
+  <div class="legal-body">
+    <p>Al navegar por este sitio web, aceptás las condiciones de uso que figuran a continuación.</p>
+    <h2>Usuario</h2><p>El uso del sitio implica la plena aceptación de estas condiciones.</p>
+    <h2>Privacidad</h2><p>El uso implica adhesión a la Política de Privacidad de Gisary SA.</p>
+    <h2>Propiedad intelectual</h2><p>Todos los elementos son propiedad de Gisary SA o sus licenciantes.</p>
+    <h2>Contacto</h2><p><a href="mailto:info@vivagis.com" style="color:var(--rose3)">info@vivagis.com</a></p>
+  </div>
+</div>
+
+<!-- PÁGINAS DINÁMICAS (contenedor) -->
+<div class="page" id="pg-dinamica">
+  <div class="ihero"><div class="ihi">
+    <div class="ihtag" id="dinTag"></div>
+    <h1 class="ihh1" id="dinTitle"></h1>
+    <p class="ihp" id="dinSub"></p>
+  </div></div>
+  <div class="ibody">
+    <div class="page-content" id="dinContent"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<!-- MI CUENTA PAGE -->
+<div class="page" id="pg-mi-cuenta">
+  <div class="ihero"><div class="ihi">
+    <div class="ihtag">Tu espacio</div>
+    <h1 class="ihh1" id="accountTitle">Mi cuenta</h1>
+  </div></div>
+
+  <!-- NOT LOGGED IN -->
+  <div id="accountGuest"><div style="max-width:400px;margin:60px auto;padding:0 40px;text-align:center">
+    <div style="font-size:48px;margin-bottom:16px">👤</div>
+    <h2 style="font-family:'Clash Display',sans-serif;font-size:24px;margin-bottom:10px">Iniciá sesión</h2>
+    <p style="font-size:13px;color:var(--ink3);margin-bottom:28px">Accedé a tu cuenta para ver tus pedidos y gestionar tus datos.</p>
+    <button class="bf-dark" style="width:100%;padding:14px;margin-bottom:10px" onclick="openAuth('login')">Iniciar sesión</button>
+    <button class="bg-dark" style="width:100%;padding:14px" onclick="openAuth('register')">Crear cuenta</button>
+  </div></div>
+
+  <!-- LOGGED IN -->
+  <div id="accountUser" style="display:none">
+    <div class="account-wrap">
+      <div class="account-grid">
+        <div class="account-sidebar">
+          <div class="account-avatar" id="accountAvatar">U</div>
+          <div class="account-name" id="accountName">Usuario</div>
+          <div class="account-email" id="accountEmailDisplay"></div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <button class="account-nav-item active" onclick="showAccountPanel('pedidos',this)">📦 Mis pedidos</button>
+            <button class="account-nav-item" onclick="showAccountPanel('datos',this)">👤 Mis datos</button>
+            <button class="account-nav-item" onclick="showAccountPanel('password',this)">🔒 Contraseña</button>
+          </div>
+          <button class="btn-logout-client" onclick="logoutClient()">Cerrar sesión</button>
+        </div>
+        <div class="account-content">
+          <!-- PEDIDOS -->
+          <div class="account-panel active" id="apanel-pedidos">
+            <div class="account-section-title">Mis pedidos</div>
+            <div id="myOrdersList"><div class="loading"><div class="spinner"></div></div></div>
+          </div>
+          <!-- DATOS -->
+          <div class="account-panel" id="apanel-datos">
+            <div class="account-section-title">Mis datos</div>
+            <div class="fg"><label>Nombre completo</label><input type="text" id="profileName" placeholder="Tu nombre completo"></div>
+            <div class="fg"><label>DNI / CUIT / CUIL</label><input type="text" id="profileDni" placeholder="20-12345678-9"></div>
+            <div class="fg"><label>Teléfono / WhatsApp</label><input type="text" id="profilePhone" placeholder="+54 11 0000-0000"></div>
+            <div class="fg"><label>Provincia</label>
+              <select id="profileProvincia"><option value="">Seleccioná</option><option>Buenos Aires</option><option>CABA</option><option>Córdoba</option><option>Santa Fe</option><option>Mendoza</option><option>Otra</option></select>
+            </div>
+            <div class="fg"><label>Ciudad</label><input type="text" id="profileCiudad" placeholder="Ciudad"></div>
+            <div class="fg"><label>Dirección</label><input type="text" id="profileDireccion" placeholder="Calle y número"></div>
+            <button class="bf-dark" style="padding:12px 28px;margin-top:8px" onclick="saveProfile()">Guardar datos</button>
+          </div>
+          <!-- CONTRASEÑA -->
+          <div class="account-panel" id="apanel-password">
+            <div class="account-section-title">Cambiar contraseña</div>
+            <div class="fg"><label>Nueva contraseña</label><input type="password" id="newPwd" placeholder="Mínimo 6 caracteres"></div>
+            <div class="fg"><label>Confirmar contraseña</label><input type="password" id="confirmPwd" placeholder="Repetí la contraseña"></div>
+            <button class="bf-dark" style="padding:12px 28px;margin-top:8px" onclick="updatePassword()">Cambiar contraseña</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="auth-ov" id="authOv" onclick="if(event.target===this)closeAuth()">
+  <div class="auth-box">
+    <button class="auth-x" onclick="closeAuth()">×</button>
+    <div style="text-align:center;margin-bottom:20px">
+      <img src="https://txiplxxnvgpryujtcgem.supabase.co/storage/v1/object/public/assets/Logo%20horizontal.jpg" alt="Vivagis" style="height:32px;width:auto">
+    </div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Iniciar sesión</button>
+      <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Crear cuenta</button>
+    </div>
+    <div class="auth-err" id="authErr"></div>
+    <div class="auth-ok" id="authOk"></div>
+
+    <!-- LOGIN -->
+    <div class="auth-panel active" id="authpanel-login">
+      <div class="auth-fg"><label>Email</label><input type="email" id="loginClientEmail" placeholder="email@ejemplo.com" onkeydown="if(event.key==='Enter')doClientLogin()"></div>
+      <div class="auth-fg"><label>Contraseña</label><input type="password" id="loginClientPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doClientLogin()"></div>
+      <button class="auth-btn" id="loginClientBtn" onclick="doClientLogin()">Ingresar →</button>
+      <p style="text-align:center;font-size:12px;color:var(--ink3);margin-top:14px;cursor:pointer" onclick="showForgotPassword()">¿Olvidaste tu contraseña?</p>
+    </div>
+
+    <!-- REGISTER -->
+    <div class="auth-panel" id="authpanel-register">
+      <div class="auth-fg"><label>Nombre completo *</label><input type="text" id="regName" placeholder="Tu nombre completo"></div>
+      <div class="auth-fg"><label>DNI / CUIT / CUIL *</label><input type="text" id="regDni" placeholder="20-12345678-9"></div>
+      <div class="auth-fg"><label>Número de celular *</label><input type="tel" id="regPhone" placeholder="+54 11 0000-0000"></div>
+      <div class="auth-fg"><label>Email *</label><input type="email" id="regEmail" placeholder="email@ejemplo.com"></div>
+      <div class="auth-fg"><label>Contraseña *</label><input type="password" id="regPass" placeholder="Mínimo 6 caracteres"></div>
+      <button class="auth-btn" id="regBtn" onclick="doClientRegister()">Crear cuenta →</button>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-inner">
+    <div class="ftop">
+      <div>
+      <button class="flogo" onclick="go('home')">
+          <span style="font-family:'Clash Display',sans-serif;font-size:24px;font-weight:700;letter-spacing:3px;color:white">VIVA<span style="color:rgba(255,255,255,0.5)">GIS</span></span>
+        </button>
+        <p class="fdesc">Fabricantes y mayoristas de moda femenina. Prendas básicas, importadas y personalizadas. Buenos Aires.</p>
+        <div class="fsocs">
+          <a class="fsoc" href="https://instagram.com/Vivagis__" target="_blank" id="footIG">IG</a>
+          <a class="fsoc" href="https://www.facebook.com/vivagis/" target="_blank" id="footFB">FB</a>
+          <a class="fsoc" href="https://www.tiktok.com/@vivagis_" target="_blank" id="footTK">TK</a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Catálogo</h4>
+        <a onclick="filterAndGo('New In')">New In</a>
+        <a onclick="filterAndGo('Importados')">Importados</a>
+        <a onclick="filterAndGo('Sweaters')">Sweaters</a>
+        <a onclick="filterAndGo('Vestidos')">Vestidos</a>
+        <a onclick="filterAndGo('Camisas')">Camisas</a>
+      </div>
+      <div class="fcol">
+        <h4>Información</h4>
+        <a onclick="go('como-comprar')">Cómo comprar</a>
+        <a onclick="go('locales')">Locales</a>
+        <a onclick="go('quienes-somos')">Quiénes somos</a>
+        <a onclick="go('faq')">Preguntas frecuentes</a>
+        <a onclick="go('politica-cambios')">Política de cambios</a>
+        <a onclick="go('privacidad')">Privacidad</a>
+        <a onclick="go('terminos')">Términos</a>
+        <div id="footerDynLinks"></div>
+      </div>
+      <div class="fcol">
+        <h4>Contacto</h4>
+        <a href="https://wa.me/541164480771" id="footWA">WhatsApp: 11-6448-0771</a>
+        <a href="mailto:info@vivagis.com" id="footEmail">info@vivagis.com</a>
+        <a onclick="go('locales')">Campana 641, CABA</a>
+        <a onclick="go('locales')">Av. Avellaneda 3267</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Gisary SA · Viva Gis | Indumentaria Mayorista. Todos los derechos reservados.</span>
+      <span><a onclick="go('privacidad')">Privacidad</a> · <a onclick="go('terminos')">Términos</a> · <a href="https://autogestion.produccion.gob.ar/consumidores" target="_blank">Defensa del consumidor</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- CART -->
+<div class="cart-ov" id="cOv" onclick="closeCart()"></div>
+<div class="cart-panel" id="cPanel">
+  <div class="cart-top"><span class="cart-ttl">Tu carrito</span><button class="cart-x" onclick="closeCart()">×</button></div>
+  <div class="cart-body" id="cBody"><div class="cart-empty"><div class="ei">🛍</div><p>El carrito está vacío</p></div></div>
+  <div class="cart-foot" id="cFoot" style="display:none">
+    <div class="ctline"><span>Subtotal</span><span id="cSideTotal">$0</span></div>
+    <div class="ctline"><span>Envío</span><span>A calcular</span></div>
+    <div class="ctgrand"><span>Total</span><span id="cSideGrand">$0</span></div>
+    <div class="cmin-warn" id="cMinWarn" style="display:none">⚠ Monto mínimo: $120.000</div>
+    <button class="btn-co" onclick="go('checkout');closeCart()">Finalizar compra →</button>
+    <button class="btn-wa" onclick="sendWA()">💬 Consultar por WhatsApp</button>
+  </div>
+</div>
+
+<!-- POPUP -->
+<div class="popup-ov" id="popupOv">
+  <div class="popup-box" id="popupBox">
+    <button class="popup-x" onclick="closePopup()">×</button>
+    <img class="popup-img" id="popupImg" src="" alt="" style="display:none">
+    <div class="popup-body">
+      <div class="popup-title" id="popupTitle"></div>
+      <div class="popup-msg" id="popupMsg"></div>
+      <button class="bf-dark" id="popupBtn" style="width:100%;padding:14px" onclick="handlePopupBtn()">Ver más</button>
+    </div>
+  </div>
+</div>
+
+
+<a class="wa-float" id="waFloat" href="https://wa.me/541164480771" target="_blank">💬</a>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+// ══════════════════════════════════════════════
+// SUPABASE CONFIG
+// ══════════════════════════════════════════════
+const SB_URL = 'https://txiplxxnvgpryujtcgem.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4aXBseHhudmdwcnl1anRjZ2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk0NTkzNzMsImV4cCI6MjA5NTAzNTM3M30.sISdFysUJKDvCuwCfELc32DSuFauFrSuXbJk1FMqirU';
+const SBH = {'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};
+
+async function sbGet(table, params=''){
+  try{
+    const r = await fetch(`${SB_URL}/rest/v1/${table}${params}`,{headers:SBH});
+    if(!r.ok) return [];
+    return await r.json();
+  }catch(e){ return []; }
+}
+
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+let MINIMO = 120000;
+let WA_NUM = '541164480771';
+let cart = [];
+let allProducts = [];
+let allCats = [];
+let activeFilter = 'Todos';
+let activeSort = '';
+let carOffsets = {feat:0, best:0};
+let tIdx = 0;
+let popupLink = 'shop';
+
+const $ = id => document.getElementById(id);
+const fmt = n => '$' + Math.round(n).toLocaleString('es-AR');
+
+// ══════════════════════════════════════════════
+// TOAST
+// ══════════════════════════════════════════════
+function toast(msg){
+  const t=$('toast'); t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ══════════════════════════════════════════════
+// NAV
+// ══════════════════════════════════════════════
+window.addEventListener('scroll',()=>$('nav').classList.toggle('scrolled',window.scrollY>10));
+
+function go(pg){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const el=$(`pg-${pg}`);
+  if(el){ el.classList.add('active'); }
+  else { showDynamicPage(pg); }
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const nl=$(`nl-${pg}`); if(nl) nl.classList.add('active');
+  if(pg==='checkout'){ renderCheckout(); loadCheckoutOptions(); }
+  setTimeout(initReveal,100);
+  // Push to browser history so back button works
+  if(window.location.hash !== `#${pg}`){
+    history.pushState({pg}, '', `#${pg}`);
+  }
+}
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', (e)=>{
+  const pg = e.state?.pg || window.location.hash.replace('#','') || 'home';
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const el=$(`pg-${pg}`);
+  if(el){ el.classList.add('active'); }
+  else { showDynamicPage(pg); }
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(initReveal,100);
+});
+
+function toggleMobCats(){
+  const list = document.getElementById('mobCatLinks');
+  const arrow = document.getElementById('mobCatsArrow');
+  const isOpen = list.style.display !== 'none';
+  list.style.display = isOpen ? 'none' : 'block';
+  if(arrow) arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+}
+
+function updateMobAccount(){
+  const guest = document.getElementById('mobGuestBtns');
+  const user = document.getElementById('mobUserInfo');
+  const greeting = document.getElementById('mobUserGreeting');
+  if(!guest||!user) return;
+  if(currentClient){
+    const name = currentClient.user_metadata?.full_name || currentClient.email?.split('@')[0] || 'Usuaria';
+    if(greeting) greeting.textContent = `Hola, ${name}!`;
+    guest.style.display = 'none';
+    user.style.display = 'block';
+  } else {
+    guest.style.display = 'block';
+    user.style.display = 'none';
+  }
+}
+
+function getNavBottom(){
+  // Calculate exact bottom of nav (announce + nav)
+  const announce = document.getElementById('announceBar');
+  const nav = document.getElementById('nav');
+  const announceH = announce ? announce.offsetHeight : 0;
+  const navH = nav ? nav.offsetHeight : 64;
+  return announceH + navH;
+}
+
+function toggleMob(){
+  const menu = document.getElementById('mobMenu');
+  menu.classList.toggle('open');
+  if(menu.classList.contains('open')){
+    menu.style.top = getNavBottom() + 'px';
+    updateMobAccount();
+  }
+}
+function closeMob(){
+  document.getElementById('mobMenu')?.classList.remove('open');
+}
+
+// ══════════════════════════════════════════════
+// REVEAL
+// ══════════════════════════════════════════════
+const rvObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('vis'); rvObs.unobserve(e.target); }});
+},{threshold:0.08});
+function initReveal(){ document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el)); }
+initReveal();
+
+// ══════════════════════════════════════════════
+// LOAD CONFIG FROM SUPABASE
+// ══════════════════════════════════════════════
+async function loadConfig(){
+  const data = await sbGet('config','');
+  if(!data.length) return;
+  const cfg = {};
+  data.forEach(c=>cfg[c.clave]=c.valor);
+
+  if(cfg.monto_minimo){ MINIMO=parseInt(cfg.monto_minimo); }
+  if(cfg.whatsapp){ WA_NUM=cfg.whatsapp; $('waFloat').href=`https://wa.me/${WA_NUM}`; }
+  if(cfg.announce_text){ $('announceBar').textContent=cfg.announce_text; }
+  if(cfg.instagram){ $('footIG').href=cfg.instagram; }
+  if(cfg.facebook){ $('footFB').href=cfg.facebook; }
+  if(cfg.tiktok){ $('footTK').href=cfg.tiktok; }
+  if(cfg.email){ $('footEmail').href=`mailto:${cfg.email}`; $('footEmail').textContent=cfg.email; }
+  if(cfg.whatsapp){ $('footWA').href=`https://wa.me/${cfg.whatsapp}`; }
+
+  // update min text
+  if(cfg.monto_minimo){
+    const mt=$('shopMinText'); if(mt) mt.textContent=`Monto mínimo de compra: ${fmt(MINIMO)}`;
+    const cm=$('coMinText'); if(cm) cm.textContent=`Mínimo ${fmt(MINIMO)}`;
+  }
+}
+
+// ══════════════════════════════════════════════
+// LOAD BANNER
+// ══════════════════════════════════════════════
+async function loadBanner(){
+  const data = await sbGet('banners','?activo=eq.true&posicion=eq.hero&order=orden&limit=1');
+  const hero=$('heroSection');
+  if(!data.length){
+    hero.classList.add('no-img');
+    const hbtns=$('heroBtn');
+    hbtns.innerHTML=`<button class="bf-dark" onclick="go('shop')">Ver catálogo</button><button class="bg-dark" onclick="go('como-comprar')">Cómo comprar</button>`;
+    return;
+  }
+  const b=data[0];
+  if(b.imagen_url){
+    hero.classList.remove('no-img');
+    // Use background-image for better cover behavior
+    const bg=document.createElement('div');
+    bg.className='hero-bg';
+    bg.style.backgroundImage=`url(${b.imagen_url})`;
+    hero.insertBefore(bg,hero.firstChild);
+    const ov=document.createElement('div');
+    ov.className='hero-overlay';
+    hero.insertBefore(ov,hero.children[1]);
+    // Add scroll indicator
+    const scroll=document.createElement('div');
+    scroll.className='hero-scroll';
+    scroll.innerHTML='<span>Scroll</span><div class="hero-scroll-line"></div>';
+    hero.appendChild(scroll);
+    // Hide grid when has image
+    const hg=$('heroGrid'); if(hg) hg.style.display='none';
+  } else {
+    hero.classList.add('no-img');
+    const hbtns=$('heroBtn');
+    hbtns.innerHTML=`<button class="bf-dark" onclick="go('shop')">Ver catálogo</button><button class="bg-dark" onclick="go('como-comprar')">Cómo comprar</button>`;
+  }
+  if(b.titulo) $('heroH1').innerHTML=b.titulo;
+  if(b.subtitulo) $('heroP').textContent=b.subtitulo;
+  if(b.texto_boton){
+    const hbtns=$('heroBtn');
+    const clsBtn=b.imagen_url?'bf':'bf-dark';
+    const clsBtn2=b.imagen_url?'bg':'bg-dark';
+    hbtns.innerHTML=`<button class="${clsBtn}" onclick="go('${b.link_boton||'shop'}')">${b.texto_boton}</button><button class="${clsBtn2}" onclick="go('como-comprar')">Cómo comprar</button>`;
+  }
+}
+
+// ══════════════════════════════════════════════
+// LOAD CATEGORIES
+// ══════════════════════════════════════════════
+async function loadCategories(){
+  const data = await sbGet('categorias','?activa=eq.true&order=orden');
+  allCats = data;
+  renderCatsGrid(data);
+  renderFilterBar(data);
+  renderMarquee(data);
+  renderCatDropdown(data);
+}
+
+function renderCatsGrid(cats){
+  const g=$('catsGrid'); if(!g) return;
+  if(!cats.length){ g.innerHTML=''; return; }
+  g.innerHTML = cats.slice(0,4).map((c,i)=>{
+    const bgStyle = c.imagen_url
+      ? `background-image:url(${c.imagen_url})`
+      : `background-color:${c.color_bg||'#F0F0F0'}`;
+    const emojiEl = !c.imagen_url ? `<div class="cemoji">${c.emoji}</div>` : '';
+    return `<div class="ctile" onclick="filterAndGo('${c.nombre}')">
+      <div class="ctile-img" style="${bgStyle}"></div>
+      <div class="ctile-overlay"></div>
+      ${emojiEl}
+      <div class="clbl">
+        <span class="clbl-tag">Categoría</span>
+        <div class="clbl-name">${c.nombre}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderFilterBar(cats){
+  const bar=$('fbar'); if(!bar) return;
+  const chips=[{nombre:'Todos'},...cats];
+  bar.innerHTML=chips.map(c=>`<button class="fchip ${c.nombre==='Todos'&&activeFilter==='Todos'?'on':c.nombre===activeFilter?'on':''}" onclick="applyFilter('${c.nombre}',this)">${c.nombre}</button>`).join('');
+  injectFchipStyle();
+}
+
+function renderMarquee(cats){
+  const inner=$('marqueeInner'); if(!inner||!cats.length) return;
+  const items=cats.map(c=>`<s>${c.nombre}</s><s class="ac">✦</s>`).join('');
+  inner.innerHTML=items+items; // duplicate for seamless loop
+}
+
+function injectFchipStyle(){
+  if($('fchipSt')) return;
+  const s=document.createElement('style');
+  s.id='fchipSt';
+  s.textContent=`.fchip{padding:7px 16px;border:1px solid var(--sand3);border-radius:20px;font-size:10px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;background:white;font-family:'Satoshi',sans-serif;transition:all .2s;color:var(--ink3)}.fchip:hover,.fchip.on{background:var(--ink);color:white;border-color:var(--ink)}`;
+  document.head.appendChild(s);
+}
+
+// ══════════════════════════════════════════════
+// LOAD PRODUCTS
+// ══════════════════════════════════════════════
+async function loadProducts(){
+  // Skeleton
+  $('featTrack').innerHTML=Array(4).fill(`<div class="pcard"><div class="skeleton skel-card"></div></div>`).join('');
+  $('bestTrack').innerHTML=Array(4).fill(`<div class="pcard"><div class="skeleton skel-card"></div></div>`).join('');
+
+  const data = await sbGet('productos','?activo=eq.true&order=orden,created_at');
+  allProducts = data;
+
+  renderCarousel('featTrack', data.filter(p=>p.destacado));
+  renderCarousel('bestTrack', data.filter(p=>p.mas_vendido));
+  renderShop();
+}
+
+// ══════════════════════════════════════════════
+// PRODUCT CARD
+// ══════════════════════════════════════════════
+function mkCard(p){
+  const badge=p.badge?`<div class="ppil ${p.badge}">${p.badge==='new'?'Nuevo':p.badge==='imp'?'Importado':'Oferta'}</div>`:'';
+  const oldH=p.precio_anterior?`<span class="pold">${fmt(p.precio_anterior)}</span>`:'';
+  const imgEl=p.imagen_url
+    ?`<img src="${p.imagen_url}" alt="${p.nombre}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">`
+    :`<span style="font-size:60px;user-select:none">${p.emoji||'👗'}</span>`;
+  return `<div class="pcard" onclick="showDetail('${p.id}')">
+    <div class="pimg" style="background:${p.color_bg||'#EDE0D4'}">
+      ${badge}${imgEl}
+      <button class="pquick" onclick="event.stopPropagation();addCart('${p.id}')">+ Agregar</button>
+    </div>
+    <div class="pbody">
+      <div class="pcat">${p.categoria_slug||''}</div>
+      <div class="pname">${p.nombre}</div>
+      <div class="ppr"><span class="pprice">${fmt(p.precio)}</span>${oldH}</div>
+      ${(p.colores&&p.colores.length)?`<div class="pcard-colors">${p.colores.slice(0,6).map(c=>`<div class="pcard-dot" style="background:${c.hex||c}" title="${c.nombre||c}"></div>`).join('')}</div>`:''}
+    </div>
+  </div>`;
+}
+
+// ══════════════════════════════════════════════
+// CAROUSEL
+// ══════════════════════════════════════════════
+function renderCarousel(trackId, items){
+  const t=$(trackId); if(!t) return;
+  if(!items.length){ t.innerHTML=`<p style="color:var(--ink3);font-size:13px;padding:20px">No hay productos en esta sección todavía.</p>`; return; }
+  t.innerHTML=items.map(mkCard).join('');
+}
+
+function carVisible(){ return window.innerWidth<=640?2:window.innerWidth<=960?3:4; }
+
+function carPrev(id){
+  carOffsets[id]=Math.max(0,carOffsets[id]-1);
+  moveCarousel(id);
+}
+function carNext(id){
+  const items=id==='feat'?allProducts.filter(p=>p.destacado):allProducts.filter(p=>p.mas_vendido);
+  const max=Math.max(0,items.length-carVisible());
+  carOffsets[id]=Math.min(max,carOffsets[id]+1);
+  moveCarousel(id);
+}
+function moveCarousel(id){
+  const t=$(`${id}Track`); if(!t) return;
+  const card=t.querySelector('.pcard'); if(!card) return;
+  t.style.transform=`translateX(-${carOffsets[id]*(card.offsetWidth+16)}px)`;
+}
+
+// ══════════════════════════════════════════════
+// SHOP
+// ══════════════════════════════════════════════
+function renderShop(){
+  let ps=[...allProducts];
+  if(activeFilter!=='Todos') ps=ps.filter(p=>p.categoria_slug===activeFilter||p.categoria_slug?.replace('-',' ')===activeFilter||
+    allCats.find(c=>c.nombre===activeFilter)?.slug===p.categoria_slug);
+  if(activeSort==='asc') ps.sort((a,b)=>a.precio-b.precio);
+  if(activeSort==='desc') ps.sort((a,b)=>b.precio-a.precio);
+  if(activeSort==='az') ps.sort((a,b)=>a.nombre.localeCompare(b.nombre));
+  const g=$('shopGrid'); if(!g) return;
+  g.innerHTML=ps.length?ps.map(mkCard).join(''):`<p style="color:var(--ink3);font-size:13px;padding:20px">No hay productos en esta categoría todavía.</p>`;
+}
+
+function applyFilter(f,btn){
+  activeFilter=f;
+  document.querySelectorAll('.fchip').forEach(b=>b.classList.remove('on'));
+  if(btn) btn.classList.add('on');
+  renderShop();
+}
+function applySort(v){ activeSort=v; renderShop(); }
+function filterAndGo(cat){
+  activeFilter=cat; go('shop');
+  setTimeout(()=>{ renderFilterBar(allCats); renderShop(); },60);
+}
+
+// ══════════════════════════════════════════════
+// DETAIL
+// ══════════════════════════════════════════════
+function showDetail(id){
+  const p=allProducts.find(x=>x.id==id); if(!p) return;
+  const szs=(p.talles||[]).map(s=>`<button class="sz" onclick="this.closest('.sizes').querySelectorAll('.sz').forEach(b=>b.classList.remove('on'));this.classList.add('on')">${s}</button>`).join('');
+  const coloresHtml = (p.colores&&p.colores.length)
+    ? `<div class="dlbl">Colores disponibles</div>
+       <div class="colors-row">${p.colores.map(c=>`
+         <div class="color-opt" onclick="this.closest('.colors-row').querySelectorAll('.color-opt').forEach(b=>b.classList.remove('on'));this.classList.add('on')" title="${c.nombre||c}">
+           <div class="color-circle" style="background:${c.hex||c}"></div>
+           <span class="color-name">${c.nombre||c}</span>
+         </div>`).join('')}
+       </div>` : '';
+  const oldH=p.precio_anterior?`<span style="font-size:14px;color:var(--ink3);text-decoration:line-through;margin-left:10px">${fmt(p.precio_anterior)}</span>`:'';
+  const imgEl=p.imagen_url
+    ?`<img src="${p.imagen_url}" alt="${p.nombre}" style="width:100%;height:100%;object-fit:cover">`
+    :`${p.emoji||'👗'}`;
+  $('detailWrap').innerHTML=`<div class="dw">
+    <div class="dgal">
+      <div class="dthumbs">
+        <div class="dthumb on" style="background:${p.color_bg||'#EDE0D4'}">${imgEl}</div>
+        <div class="dthumb" style="background:${p.color_bg||'#EDE0D4'};opacity:.6">${imgEl}</div>
+      </div>
+      <div class="dmain" style="background:${p.color_bg||'#EDE0D4'}">${imgEl}</div>
+    </div>
+    <div class="dinfo">
+      <button class="dback" onclick="go('shop')">← Volver al catálogo</button>
+      <div class="dcat">${p.categoria_slug||''}</div>
+      <h1 class="dname">${p.nombre}</h1>
+      <div class="dprice">${fmt(p.precio)}${oldH}</div>
+      <p class="ddesc">${p.descripcion||''}</p>
+      <div class="dlbl">Talles disponibles</div>
+      <div class="sizes">${szs||'<span style="font-size:13px;color:var(--ink3)">Consultar disponibilidad</span>'}</div>
+      ${coloresHtml}
+      <div class="dlbl">Cantidad</div>
+      <div class="qty-row">
+        <button class="qb" onclick="const v=parseInt(document.getElementById('dQty').value)||1;document.getElementById('dQty').value=Math.max(1,v-1)">−</button>
+        <input class="qv" id="dQty" type="number" value="1" min="1" style="border:none;outline:none;font-family:'Satoshi',sans-serif;font-size:14px;font-weight:700;width:44px;text-align:center;background:transparent">
+        <button class="qb" onclick="const v=parseInt(document.getElementById('dQty').value)||1;document.getElementById('dQty').value=v+1">+</button>
+      </div>
+      <button class="btn-addd" onclick="addCartQty('${p.id}')">Agregar al carrito</button>
+      <button class="btn-wad" onclick="sendWA()">💬 Consultar por WhatsApp</button>
+      <div class="dfeats">
+        <div class="dfeat"><div class="fdot"></div>Envíos a todo el país</div>
+        <div class="dfeat"><div class="fdot"></div>Compra mínima ${fmt(MINIMO)}</div>
+        <div class="dfeat"><div class="fdot"></div>Stock confirmado por WhatsApp</div>
+        <div class="dfeat"><div class="fdot"></div>2 locales en Avellaneda y CABA</div>
+      </div>
+    </div>
+  </div>`;
+  go('detail');
+}
+
+// ══════════════════════════════════════════════
+// CART
+// ══════════════════════════════════════════════
+function addCart(id){
+  const p=allProducts.find(x=>x.id==id); if(!p) return;
+  const ex=cart.find(x=>x.id==id);
+  if(ex) ex.qty+=1; else cart.push({...p,qty:1});
+  updateCart(); toast(`${p.nombre} agregado ✓`);
+}
+function addCartQty(id){
+  const qty=parseInt($('dQty').value)||1;
+  const p=allProducts.find(x=>x.id==id); if(!p) return;
+  const ex=cart.find(x=>x.id==id);
+  if(ex) ex.qty+=qty; else cart.push({...p,qty});
+  updateCart(); toast(`${p.nombre} agregado ✓`);
+}
+function removeCart(id){ cart=cart.filter(x=>x.id!=id); updateCart(); renderCartBody(); }
+function chQty(id,d){ const i=cart.find(x=>x.id==id); if(i){i.qty=Math.max(1,i.qty+d);updateCart();renderCartBody();} }
+function cartTotal(){ return cart.reduce((s,i)=>s+i.precio*i.qty,0); }
+
+function updateCart(){
+  const total=cartTotal();
+  const cnt=cart.reduce((s,i)=>s+i.qty,0);
+  const b=$('cBadge'); b.textContent=cnt; b.classList.add('pop'); setTimeout(()=>b.classList.remove('pop'),400);
+  $('cSideTotal').textContent=fmt(total);
+  $('cSideGrand').textContent=fmt(total);
+  $('cFoot').style.display=cart.length?'block':'none';
+  const w=$('cMinWarn'); if(w) w.style.display=(cart.length&&total<MINIMO)?'block':'none';
+}
+
+function renderCartBody(){
+  const b=$('cBody'); if(!b) return;
+  if(!cart.length){ b.innerHTML='<div class="cart-empty"><div class="ei">🛍</div><p>El carrito está vacío</p></div>'; return; }
+  b.innerHTML=cart.map(i=>{
+    const imgEl=i.imagen_url?`<img src="${i.imagen_url}" alt="${i.nombre}" style="width:100%;height:100%;object-fit:cover">`:`${i.emoji||'👗'}`;
+    return `<div class="citem">
+      <div class="citem-img" style="background:${i.color_bg||'#EDE0D4'}">${imgEl}</div>
+      <div class="citem-info">
+        <div class="citem-name">${i.nombre}</div>
+        <div class="citem-sub">${i.categoria_slug||''} · ${fmt(i.precio)} c/u</div>
+        <div class="citem-row">
+          <div class="cqty">
+            <button onclick="chQty('${i.id}',-1)">−</button>
+            <span>${i.qty}</span>
+            <button onclick="chQty('${i.id}',1)">+</button>
+          </div>
+          <span class="citem-price">${fmt(i.precio*i.qty)}</span>
+          <button class="cremove" onclick="removeCart('${i.id}')">quitar</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openCart(){ renderCartBody(); $('cOv').classList.add('open'); $('cPanel').classList.add('open'); }
+function closeCart(){ $('cOv').classList.remove('open'); $('cPanel').classList.remove('open'); }
+
+// ══════════════════════════════════════════════
+// LOAD CHECKOUT OPTIONS FROM CONFIG
+// ══════════════════════════════════════════════
+async function loadCheckoutOptions(){
+  try{
+    // Load payment methods
+    const pagosData=await sbGet('config','?clave=eq.metodos_pago');
+    if(pagosData.length){
+      const pagos=JSON.parse(pagosData[0].valor).filter(p=>p.activo);
+      const payopts=document.getElementById('payopts');
+      if(payopts&&pagos.length){
+        payopts.innerHTML=pagos.map((p,i)=>`
+          <div class="popt ${i===0?'on':''}" onclick="selPay(this)">
+            <div class="poicon">${p.icono||'💳'}</div>${p.nombre}
+          </div>`).join('');
+      }
+    }
+    // Load shipping options
+    const enviosData=await sbGet('config','?clave=eq.medios_envio');
+    if(enviosData.length){
+      const envios=JSON.parse(enviosData[0].valor).filter(e=>e.activo);
+      const sel=document.getElementById('co-transporte');
+      if(sel&&envios.length){
+        sel.innerHTML=`<option value="">Seleccioná transporte</option>`+
+          envios.map(e=>`<option value="${e.nombre}">${e.nombre}</option>`).join('');
+      }
+    }
+  }catch(e){ console.log('Checkout options fallback to defaults'); }
+}
+
+// ══════════════════════════════════════════════
+// CHECKOUT
+// ══════════════════════════════════════════════
+function renderCheckout(){
+  const total=cartTotal();
+  $('cSub').textContent=fmt(total);
+  $('cTotal').textContent=fmt(total);
+  const mn=$('sminNote'); if(mn) mn.style.display=(total>0&&total<MINIMO)?'block':'none';
+  $('checkItems').innerHTML=cart.length
+    ?cart.map(i=>{
+        const imgEl=i.imagen_url?`<img src="${i.imagen_url}" alt="${i.nombre}" style="width:100%;height:100%;object-fit:cover">`:`${i.emoji||'👗'}`;
+        return `<div class="sitem"><div class="simg" style="background:${i.color_bg||'#EDE0D4'}">${imgEl}</div><div class="sname">${i.nombre}<br><span class="smeta">x${i.qty} · ${i.categoria_slug||''}</span></div><div class="sprice">${fmt(i.precio*i.qty)}</div></div>`;
+      }).join('')
+    :'<p style="font-size:13px;color:var(--ink3);padding:12px 0">No hay productos en el carrito.</p>';
+}
+function selPay(el){ document.querySelectorAll('.popt').forEach(o=>o.classList.remove('on')); el.classList.add('on'); }
+async function placeOrder(){
+  if(cartTotal()<MINIMO){ toast(`⚠ Monto mínimo ${fmt(MINIMO)} (faltan ${fmt(MINIMO-cartTotal())})`); return; }
+
+  const g=id=>{ const el=document.getElementById(id); return el?el.value.trim():''; };
+  const nombre=g('co-nombre');
+  const apellido=g('co-apellido');
+  const email=g('co-email');
+  const telefono=g('co-tel');
+
+  if(!nombre||!apellido||!email||!telefono){
+    toast('⚠ Completá nombre, apellido, email y WhatsApp');
+    return;
+  }
+
+  const provincia=g('co-provincia');
+  const ciudad=g('co-ciudad');
+  const cp=g('co-cp');
+  const direccion=g('co-direccion');
+  const transporte=g('co-transporte');
+  const metodoPago=document.querySelector('.popt.on')?.textContent.trim()||'transferencia';
+
+  const btn=document.querySelector('.btn-pay');
+  if(btn){btn.disabled=true;btn.textContent='Procesando...';}
+
+  try{
+    const pedido={
+      nombre, apellido, email, telefono,
+      provincia, ciudad, codigo_postal:cp,
+      direccion, transporte,
+      metodo_pago:metodoPago,
+      items: cart.map(i=>({
+        id:i.id, nombre:i.nombre, precio:i.precio,
+        qty:i.qty, categoria_slug:i.categoria_slug,
+        emoji:i.emoji||'👗', imagen_url:i.imagen_url||null
+      })),
+      subtotal: cartTotal(),
+      total: cartTotal(),
+      estado: 'pendiente'
+    };
+
+    const r=await fetch(`${SB_URL}/rest/v1/pedidos`,{
+      method:'POST',
+      headers:{
+        'apikey': SB_KEY,
+        'Authorization': 'Bearer ' + SB_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
+      },
+      body:JSON.stringify(pedido)
+    });
+
+    if(!r.ok){
+      const errText=await r.text();
+      console.error('Supabase error:',errText);
+      throw new Error(errText);
+    }
+
+    const saved=await r.json();
+    const numPed=Array.isArray(saved)?saved[0]?.numero:saved?.numero||'nuevo';
+
+    const msg=`Hola Vivagis! Acabo de hacer un pedido.\n\nN° ${numPed}\n\nProductos:\n`+
+      cart.map(i=>`- ${i.qty}x ${i.nombre} ($${parseInt(i.precio).toLocaleString('es-AR')} c/u)`).join('\n')+
+      `\n\nTotal: ${fmt(cartTotal())}\nPago: ${metodoPago}`;
+
+    toast(`✅ Pedido ${numPed} confirmado!`);
+    cart=[];updateCart();
+
+    setTimeout(()=>{
+      window.open(`https://wa.me/${WA_NUM}?text=`+encodeURIComponent(msg));
+      go('home');
+    },1500);
+
+  }catch(e){
+    console.error('Error pedido:',e);
+    toast('Error al procesar el pedido. Intentá de nuevo.');
+  }finally{
+    if(btn){btn.disabled=false;btn.textContent='Confirmar pedido →';}
+  }
+}
+
+// ══════════════════════════════════════════════
+// WHATSAPP
+// ══════════════════════════════════════════════
+function sendWA(){
+  const msg=cart.length
+    ?'Hola Vivagis! Quiero hacer un pedido:\n'+cart.map(i=>`- ${i.qty}x ${i.nombre} (${fmt(i.precio)} c/u)`).join('\n')+'\n\nTotal: '+fmt(cartTotal())
+    :'Hola Vivagis! Quiero consultar sobre los productos mayoristas.';
+  window.open(`https://wa.me/${WA_NUM}?text=`+encodeURIComponent(msg));
+}
+
+// ══════════════════════════════════════════════
+// POPUP
+// ══════════════════════════════════════════════
+async function loadPopup(){
+  const data=await sbGet('popups','?activo=eq.true&order=created_at.desc&limit=1');
+  if(!data.length) return;
+  const p=data[0];
+  $('popupTitle').textContent=p.titulo;
+  $('popupMsg').textContent=p.mensaje||'';
+  popupLink=p.link_boton||'shop';
+  $('popupBtn').textContent=p.texto_boton||'Ver más';
+  if(p.imagen_url){ $('popupImg').src=p.imagen_url; $('popupImg').style.display='block'; }
+  setTimeout(()=>$('popupOv').classList.add('open'), (p.delay_segundos||3)*1000);
+}
+function closePopup(){ $('popupOv').classList.remove('open'); }
+function handlePopupBtn(){ closePopup(); go(popupLink); }
+
+// ══════════════════════════════════════════════
+// DYNAMIC PAGES
+// ══════════════════════════════════════════════
+let dynPages = [];
+async function loadDynPages(){
+  const data=await sbGet('paginas','?activa=eq.true&order=orden');
+  dynPages=data;
+
+  // Footer links
+  const fl=$('footerDynLinks'); if(fl){
+    fl.innerHTML=data.filter(p=>p.en_footer).map(p=>`<a onclick="go('${p.slug}')">${p.titulo}</a>`).join('');
+  }
+  // Mobile menu
+  const ml=$('mobDynLinks'); if(ml){
+    ml.innerHTML=data.filter(p=>p.en_menu).map(p=>`<a onclick="go('${p.slug}');closeMob()">${p.titulo}</a>`).join('');
+  }
+  // Nav links
+  const navLinks=$('navLinks'); if(navLinks){
+    data.filter(p=>p.en_menu).forEach(p=>{
+      const a=document.createElement('a');
+      a.textContent=p.titulo; a.onclick=()=>go(p.slug);
+      navLinks.appendChild(a);
+    });
+  }
+}
+
+function showDynamicPage(slug){
+  const p=dynPages.find(x=>x.slug===slug);
+  if(!p){ go('home'); return; }
+  $('dinTag').textContent='Página';
+  $('dinTitle').textContent=p.titulo;
+  $('dinSub').textContent=p.subtitulo||'';
+  // Render content (simple markdown-like)
+  const content=(p.contenido||'')
+    .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+    .replace(/_(.*?)_/g,'<em>$1</em>')
+    .replace(/^## (.+)$/gm,'<h2>$1</h2>')
+    .replace(/^- (.+)$/gm,'<li>$1</li>')
+    .replace(/\n\n/g,'</p><p>')
+    .replace(/^(?!<)/gm,'');
+  $('dinContent').innerHTML=`<p>${content}</p>`;
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  $('pg-dinamica').classList.add('active');
+}
+
+// ══════════════════════════════════════════════
+// TESTIMONIALS
+// ══════════════════════════════════════════════
+function initTestimonials(){
+  const total=document.querySelectorAll('.tslide').length;
+  const vis=window.innerWidth<=640?1:3;
+  const dots=Math.max(1,total-vis+1);
+  const dc=$('tdots'); if(!dc) return;
+  dc.innerHTML=Array.from({length:dots},(_,i)=>`<div class="tdot${i===0?' on':''}" onclick="goTSlide(${i})"></div>`).join('');
+}
+function goTSlide(i){
+  const t=$('ttrack'); if(!t) return;
+  const w=t.querySelector('.tslide'); if(!w) return;
+  tIdx=i;
+  t.style.transform=`translateX(-${i*(w.offsetWidth+16)}px)`;
+  document.querySelectorAll('.tdot').forEach((d,j)=>d.classList.toggle('on',j===i));
+}
+setInterval(()=>{
+  const total=document.querySelectorAll('.tslide').length;
+  const vis=window.innerWidth<=640?1:3;
+  const max=total-vis;
+  goTSlide(tIdx>=max?0:tIdx+1);
+},4500);
+
+// ══════════════════════════════════════════════
+// STATS COUNTER
+// ══════════════════════════════════════════════
+function animateStats(){
+  document.querySelectorAll('[data-target]').forEach(el=>{
+    const target=parseInt(el.dataset.target);
+    const prefix=el.dataset.prefix||'';
+    let cur=0; const step=target/60;
+    const tm=setInterval(()=>{
+      cur=Math.min(target,cur+step);
+      el.textContent=prefix+(cur>=1000?Math.round(cur).toLocaleString('es-AR'):Math.round(cur));
+      if(cur>=target){ el.textContent=prefix+(target>=1000?target.toLocaleString('es-AR'):target); clearInterval(tm); }
+    },16);
+  });
+}
+const statsObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ animateStats(); statsObs.disconnect(); }});
+},{threshold:0.3});
+const stEl=document.querySelector('.stats-strip'); if(stEl) statsObs.observe(stEl);
+
+// ══════════════════════════════════════════════
+// FAQ
+// ══════════════════════════════════════════════
+function toggleFaq(btn){ const item=btn.closest('.faq-item'); const isOpen=item.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open')); if(!isOpen) item.classList.add('open'); }
+
+async function loadLocalesDynamic(){
+  const data=await sbGet('config','?clave=eq.locales');
+  if(!data.length) return;
+  try{
+    const locales=JSON.parse(data[0].valor).filter(l=>l.activo);
+    if(!locales.length) return;
+    const grid=document.querySelector('.lgrid');
+    if(!grid) return;
+    grid.innerHTML=locales.map((l,i)=>`
+      <div class="lcard">
+        <div class="lnum">0${i+1}</div>
+        <h3>${l.nombre}</h3>
+        <div class="ldetail">
+          <div class="lrow"><span>📍</span><span><strong>${l.direccion}</strong></span></div>
+          ${l.horario?`<div class="lrow"><span>🕒</span><span>${l.horario}</span></div>`:''}
+          ${l.telefono?`<div class="lrow"><span>📞</span><span><a href="tel:${l.telefono.replace(/\D/g,'')}" style="color:var(--rose3);text-decoration:none">${l.telefono}</a></span></div>`:''}
+        </div>
+        <div class="lbtns">
+          ${l.mapa?`<a href="${l.mapa}" target="_blank" class="bmap">Ver en mapa</a>`:''}
+        </div>
+      </div>`).join('');
+  }catch(e){ console.log('Using default locales'); }
+}
+
+function toggleMobSearch(){
+  const bar = document.getElementById('mobSearchBar');
+  bar.classList.toggle('open');
+  if(bar.classList.contains('open')){
+    bar.style.top = getNavBottom() + 'px';
+    setTimeout(()=>document.getElementById('mobSearchInput')?.focus(), 100);
+  }
+}
+function closeMobSearch(){
+  document.getElementById('mobSearchBar')?.classList.remove('open');
+  const inp = document.getElementById('mobSearchInput');
+  if(inp) inp.value = '';
+  document.getElementById('mobSearchResults')?.classList.remove('open');
+}
+function doSearchMob(q){
+  const res = document.getElementById('mobSearchResults');
+  if(!q.trim()){ res.classList.remove('open'); return; }
+  const results = allProducts.filter(p =>
+    p.nombre.toLowerCase().includes(q.toLowerCase()) ||
+    (p.categoria_slug||'').toLowerCase().includes(q.toLowerCase())
+  ).slice(0, 5);
+  if(!results.length){
+    res.innerHTML = `<div class="search-empty">No encontramos "${q}"</div>`;
+  } else {
+    res.innerHTML = results.map(p => {
+      const imgEl = p.imagen_url
+        ? `<img src="${p.imagen_url}" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r)">`
+        : `<span>${p.emoji||'👗'}</span>`;
+      return `<div class="search-result-item" onclick="showDetail('${p.id}');closeMobSearch()">
+        <div class="sri-img" style="background:${p.color_bg||'#F5F5F5'}">${imgEl}</div>
+        <div style="flex:1;min-width:0">
+          <div class="sri-name">${p.nombre}</div>
+          <div class="sri-cat">${p.categoria_slug||''}</div>
+        </div>
+        <div class="sri-price">$${parseInt(p.precio).toLocaleString('es-AR')}</div>
+      </div>`;
+    }).join('');
+  }
+  res.classList.add('open');
+}
+function searchEnterMob(){
+  const q = document.getElementById('mobSearchInput')?.value?.trim();
+  if(!q) return;
+  activeFilter = 'Todos';
+  go('shop');
+  setTimeout(()=>{
+    const filtered = allProducts.filter(p =>
+      p.nombre.toLowerCase().includes(q.toLowerCase()) ||
+      (p.categoria_slug||'').toLowerCase().includes(q.toLowerCase())
+    );
+    const grid = document.getElementById('shopGrid');
+    if(grid) grid.innerHTML = filtered.length
+      ? filtered.map(mkCard).join('')
+      : `<p style="font-size:13px;color:var(--ink3);padding:20px">No encontramos "${q}"</p>`;
+  }, 60);
+}
+
+// ══════════════════════════════════════════════
+// SEARCH
+// ══════════════════════════════════════════════
+let searchTimeout = null;
+
+function doSearch(q){
+  clearTimeout(searchTimeout);
+  const res = document.getElementById('searchResults');
+  if(!q.trim()){ res.classList.remove('open'); return; }
+  searchTimeout = setTimeout(()=>{
+    const results = allProducts.filter(p =>
+      p.nombre.toLowerCase().includes(q.toLowerCase()) ||
+      (p.categoria_slug||'').toLowerCase().includes(q.toLowerCase()) ||
+      (p.descripcion||'').toLowerCase().includes(q.toLowerCase())
+    ).slice(0, 6);
+    if(!results.length){
+      res.innerHTML = `<div class="search-empty">No encontramos "${q}"</div>`;
+    } else {
+      res.innerHTML = results.map(p => {
+        const imgEl = p.imagen_url
+          ? `<img src="${p.imagen_url}" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r)">`
+          : `<span>${p.emoji||'👗'}</span>`;
+        return `<div class="search-result-item" onclick="showDetail('${p.id}');closeSearch()">
+          <div class="sri-img" style="background:${p.color_bg||'#F5F5F5'}">${imgEl}</div>
+          <div style="flex:1;min-width:0">
+            <div class="sri-name">${p.nombre}</div>
+            <div class="sri-cat">${p.categoria_slug||''}</div>
+          </div>
+          <div class="sri-price">$${parseInt(p.precio).toLocaleString('es-AR')}</div>
+        </div>`;
+      }).join('');
+    }
+    res.classList.add('open');
+  }, 200);
+}
+
+function searchEnter(){
+  const q = document.getElementById('navSearchInput')?.value?.trim();
+  if(!q) return;
+  closeSearch();
+  activeFilter = 'Todos';
+  go('shop');
+  setTimeout(()=>{
+    // Filter by search term
+    const filtered = allProducts.filter(p =>
+      p.nombre.toLowerCase().includes(q.toLowerCase()) ||
+      (p.categoria_slug||'').toLowerCase().includes(q.toLowerCase())
+    );
+    const grid = document.getElementById('shopGrid');
+    if(grid) grid.innerHTML = filtered.length
+      ? filtered.map(mkCard).join('')
+      : `<p style="font-size:13px;color:var(--ink3);padding:20px">No encontramos resultados para "${q}"</p>`;
+  }, 60);
+}
+
+function closeSearch(){
+  document.getElementById('searchResults')?.classList.remove('open');
+  const inp = document.getElementById('navSearchInput');
+  if(inp) inp.value = '';
+}
+
+// Close search on click outside
+document.addEventListener('click', e => {
+  if(!e.target.closest('.search-wrap')) closeSearch();
+});
+
+// ══════════════════════════════════════════════
+// CATEGORY DROPDOWN
+// ══════════════════════════════════════════════
+function renderCatDropdown(cats){
+  const container = document.getElementById('catDropdownItems');
+  const mobContainer = document.getElementById('mobCatLinks');
+  if(!container) return;
+  container.innerHTML = cats.map(c => `
+    <button class="nav-drop-item" onclick="filterAndGo('${c.nombre}')">
+      <span class="drop-emoji">${c.emoji||'👗'}</span>
+      ${c.nombre}
+    </button>`).join('');
+  if(mobContainer){
+    mobContainer.innerHTML = cats.map(c =>
+      `<a onclick="filterAndGo('${c.nombre}');closeMob()">${c.nombre}</a>`
+    ).join('');
+  }
+}
+
+// ══════════════════════════════════════════════
+// AUTH — Supabase Authentication
+// ══════════════════════════════════════════════
+let currentClient = null;
+
+const SB_AUTH = `${SB_URL}/auth/v1`;
+const AUTH_HEADERS = {
+  'apikey': SB_KEY,
+  'Content-Type': 'application/json'
+};
+
+async function sbAuth(endpoint, body){
+  const r = await fetch(`${SB_AUTH}/${endpoint}`, {
+    method: 'POST',
+    headers: AUTH_HEADERS,
+    body: JSON.stringify(body)
+  });
+  const data = await r.json();
+  if(!r.ok) throw new Error(data.msg || data.error_description || 'Error de autenticación');
+  return data;
+}
+
+async function checkClientSession(){
+  const stored = localStorage.getItem('vg_client_session');
+  if(!stored) return;
+  try{
+    const sess = JSON.parse(stored);
+    if(sess.expires_at && Date.now() > sess.expires_at * 1000){
+      localStorage.removeItem('vg_client_session');
+      return;
+    }
+    currentClient = sess.user;
+    updateClientUI();
+  }catch(e){ localStorage.removeItem('vg_client_session'); }
+}
+
+function updateClientUI(){
+  const userBtn = document.getElementById('navUserBtn');
+  const nameEl = document.getElementById('navUserName');
+  if(!currentClient){ 
+    if(nameEl) nameEl.style.display='none';
+    return; 
+  }
+  // Show name in nav
+  const displayName = currentClient.user_metadata?.full_name || currentClient.email?.split('@')[0] || 'Mi cuenta';
+  if(nameEl){ nameEl.textContent=displayName; nameEl.style.display='block'; }
+
+  // Update account page
+  const avatar = document.getElementById('accountAvatar');
+  const nameDisp = document.getElementById('accountName');
+  const emailDisp = document.getElementById('accountEmailDisplay');
+  if(avatar) avatar.textContent = displayName[0].toUpperCase();
+  if(nameDisp) nameDisp.textContent = displayName;
+  if(emailDisp) emailDisp.textContent = currentClient.email;
+
+  // Show account content
+  document.getElementById('accountGuest').style.display='none';
+  document.getElementById('accountUser').style.display='block';
+}
+
+function openAuth(tab='login'){
+  switchAuthTab(tab);
+  document.getElementById('authErr').classList.remove('show');
+  document.getElementById('authOk').classList.remove('show');
+  document.getElementById('authOv').classList.add('open');
+}
+function closeAuth(){ document.getElementById('authOv').classList.remove('open'); }
+
+function switchAuthTab(tab){
+  document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.auth-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById(`tab-${tab}`).classList.add('active');
+  document.getElementById(`authpanel-${tab}`).classList.add('active');
+  document.getElementById('authErr').classList.remove('show');
+  document.getElementById('authOk').classList.remove('show');
+}
+
+function showAuthErr(msg){ const el=document.getElementById('authErr'); el.textContent=msg; el.classList.add('show'); }
+function showAuthOk(msg){ const el=document.getElementById('authOk'); el.textContent=msg; el.classList.add('show'); }
+
+async function doClientLogin(){
+  const email = document.getElementById('loginClientEmail').value.trim();
+  const password = document.getElementById('loginClientPass').value;
+  if(!email||!password){ showAuthErr('Completá email y contraseña'); return; }
+  const btn = document.getElementById('loginClientBtn');
+  btn.disabled=true; btn.textContent='Ingresando...';
+  try{
+    const data = await sbAuth('token?grant_type=password', {email, password});
+    localStorage.setItem('vg_client_session', JSON.stringify({user:data.user, expires_at:data.expires_at, access_token:data.access_token}));
+    currentClient = data.user;
+    closeAuth();
+    updateClientUI();
+    go('mi-cuenta');
+    toast('¡Bienvenida! 👋');
+  }catch(e){ showAuthErr(e.message||'Email o contraseña incorrectos'); }
+  finally{ btn.disabled=false; btn.textContent='Ingresar →'; }
+}
+
+async function doClientRegister(){
+  const name = document.getElementById('regName').value.trim();
+  const dni = document.getElementById('regDni').value.trim();
+  const phone = document.getElementById('regPhone').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const password = document.getElementById('regPass').value;
+  if(!name||!dni||!phone||!email||!password){ showAuthErr('Completá todos los campos'); return; }
+  if(password.length<6){ showAuthErr('La contraseña debe tener al menos 6 caracteres'); return; }
+  const btn = document.getElementById('regBtn');
+  btn.disabled=true; btn.textContent='Creando cuenta...';
+  try{
+    await sbAuth('signup', {
+      email, password,
+      data:{ full_name:name, dni, phone }
+    });
+    showAuthOk('¡Cuenta creada! Revisá tu email para confirmar.');
+    document.getElementById('authErr').classList.remove('show');
+  }catch(e){ showAuthErr(e.message||'Error al crear la cuenta'); }
+  finally{ btn.disabled=false; btn.textContent='Crear cuenta →'; }
+}
+
+async function doGoogleLogin(){
+  // Redirect to Google OAuth via Supabase
+  const redirectTo = window.location.href;
+  window.location.href = `${SB_AUTH}/authorize?provider=google&redirect_to=${encodeURIComponent(redirectTo)}`;
+}
+
+async function showForgotPassword(){
+  const email = document.getElementById('loginClientEmail').value.trim();
+  if(!email){ showAuthErr('Ingresá tu email primero'); return; }
+  try{
+    await sbAuth('recover', {email});
+    showAuthOk('Te enviamos un email para restablecer tu contraseña.');
+  }catch(e){ showAuthErr('Error al enviar el email'); }
+}
+
+function logoutClient(){
+  localStorage.removeItem('vg_client_session');
+  currentClient = null;
+  const nameEl = document.getElementById('navUserName');
+  if(nameEl) nameEl.style.display='none';
+  document.getElementById('accountGuest').style.display='block';
+  document.getElementById('accountUser').style.display='none';
+  toast('Sesión cerrada');
+  go('home');
+}
+
+// Account panels
+function showAccountPanel(panel, btn){
+  document.querySelectorAll('.account-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.account-nav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById(`apanel-${panel}`).classList.add('active');
+  if(btn) btn.classList.add('active');
+  if(panel==='pedidos') loadMyOrders();
+  if(panel==='datos') loadProfileData();
+}
+
+async function loadMyOrders(){
+  if(!currentClient) return;
+  const list = document.getElementById('myOrdersList');
+  list.innerHTML='<div class="loading"><div class="spinner"></div></div>';
+  const data = await sbGet('pedidos',`?email=eq.${currentClient.email}&order=created_at.desc`);
+  if(!data.length){
+    list.innerHTML='<div class="no-orders"><div class="icon">📦</div><p>Todavía no tenés pedidos</p></div>';
+    return;
+  }
+  list.innerHTML = data.map(p=>{
+    const fecha = new Date(p.created_at).toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'});
+    const items = (p.items||[]).map(i=>`${i.qty}x ${i.nombre}`).join(', ');
+    return `<div class="order-card">
+      <div class="order-header">
+        <span class="order-num">${p.numero||p.id.substring(0,8)}</span>
+        <span class="order-date">${fecha}</span>
+      </div>
+      <div class="order-items-list">${items}</div>
+      <div class="order-footer">
+        <span class="order-total">$${parseInt(p.total).toLocaleString('es-AR')}</span>
+        <span class="order-estado ${p.estado}">${p.estado}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function loadProfileData(){
+  if(!currentClient) return;
+  const meta = currentClient.user_metadata||{};
+  const n=document.getElementById('profileName'); if(n) n.value=meta.full_name||'';
+  const d=document.getElementById('profileDni'); if(d) d.value=meta.dni||'';
+  const ph=document.getElementById('profilePhone'); if(ph) ph.value=meta.phone||'';
+  const pr=document.getElementById('profileProvincia'); if(pr) pr.value=meta.provincia||'';
+  const ci=document.getElementById('profileCiudad'); if(ci) ci.value=meta.ciudad||'';
+  const di=document.getElementById('profileDireccion'); if(di) di.value=meta.direccion||'';
+}
+
+async function saveProfile(){
+  if(!currentClient) return;
+  const sess=JSON.parse(localStorage.getItem('vg_client_session')||'{}');
+  if(!sess.access_token){ toast('Sesión expirada, volvé a iniciar sesión','err'); return; }
+  const meta={
+    full_name: document.getElementById('profileName')?.value||'',
+    dni: document.getElementById('profileDni')?.value||'',
+    phone: document.getElementById('profilePhone')?.value||'',
+    provincia: document.getElementById('profileProvincia')?.value||'',
+    ciudad: document.getElementById('profileCiudad')?.value||'',
+    direccion: document.getElementById('profileDireccion')?.value||'',
+  };
+  try{
+    const r=await fetch(`${SB_AUTH}/user`,{
+      method:'PUT',
+      headers:{...AUTH_HEADERS,'Authorization':'Bearer '+sess.access_token},
+      body:JSON.stringify({data:meta})
+    });
+    if(!r.ok) throw new Error('Error al guardar');
+    const updated=await r.json();
+    currentClient.user_metadata=updated.user_metadata||meta;
+    sess.user=currentClient;
+    localStorage.setItem('vg_client_session',JSON.stringify(sess));
+    updateClientUI();
+    toast('Datos guardados ✓');
+  }catch(e){ toast('Error al guardar los datos','err'); }
+}
+
+async function updatePassword(){
+  const newPwd=document.getElementById('newPwd')?.value;
+  const confirmPwd=document.getElementById('confirmPwd')?.value;
+  if(!newPwd||newPwd.length<6){ toast('La contraseña debe tener al menos 6 caracteres','err'); return; }
+  if(newPwd!==confirmPwd){ toast('Las contraseñas no coinciden','err'); return; }
+  const sess=JSON.parse(localStorage.getItem('vg_client_session')||'{}');
+  if(!sess.access_token){ toast('Sesión expirada','err'); return; }
+  try{
+    const r=await fetch(`${SB_AUTH}/user`,{
+      method:'PUT',
+      headers:{...AUTH_HEADERS,'Authorization':'Bearer '+sess.access_token},
+      body:JSON.stringify({password:newPwd})
+    });
+    if(!r.ok) throw new Error('Error');
+    toast('Contraseña actualizada ✓');
+    document.getElementById('newPwd').value='';
+    document.getElementById('confirmPwd').value='';
+  }catch(e){ toast('Error al cambiar la contraseña','err'); }
+}
+
+// Check Google OAuth callback
+function checkOAuthCallback(){
+  const hash=window.location.hash;
+  if(hash.includes('access_token')){
+    const params=new URLSearchParams(hash.substring(1));
+    const access_token=params.get('access_token');
+    const expires_at=params.get('expires_at');
+    if(access_token){
+      fetch(`${SB_AUTH}/user`,{headers:{...AUTH_HEADERS,'Authorization':'Bearer '+access_token}})
+        .then(r=>r.json()).then(user=>{
+          if(user.id){
+            localStorage.setItem('vg_client_session',JSON.stringify({user,expires_at,access_token}));
+            currentClient=user;
+            updateClientUI();
+            window.history.replaceState(null,'',window.location.pathname);
+            toast('¡Bienvenida! 👋');
+          }
+        }).catch(()=>{});
+    }
+  }
+}
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+async function init(){
+  // Limpiar buscador al cargar (evita autofill del navegador)
+  setTimeout(()=>{
+    const s=document.getElementById('navSearchInput');
+    if(s) s.value='';
+    const ms=document.getElementById('mobSearchInput');
+    if(ms) ms.value='';
+  }, 100);
+  checkOAuthCallback();
+  checkClientSession();
+  await Promise.all([loadConfig(), loadBanner(), loadCategories(), loadProducts(), loadDynPages()]);
+  loadLocalesDynamic();
+  initTestimonials();
+  loadPopup();
+  injectFchipStyle();
+  initReveal();
+  // Handle direct URL with hash
+  const hash = window.location.hash.replace('#','');
+  if(hash && hash !== 'home'){
+    setTimeout(()=>go(hash), 100);
+  } else {
+    history.replaceState({pg:'home'}, '', '#home');
+  }
+}
+init();
+</script>
+</body>
+</html>
